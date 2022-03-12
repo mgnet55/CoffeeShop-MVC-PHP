@@ -1,0 +1,27 @@
+{
+    "name": "gimmey/php-mvc",
+    "description": "Micro MVC PHP based framework",
+
+    "authors": [
+        {
+            "name": "Mina Gamal",
+            "email": "mena.g2013@gmail.com"
+        }
+    ],
+	    "autoload": {
+        "psr-4": {
+            "PhpMvc\\": "src",
+			"App\\": "App"
+        }
+    },
+    "require": {
+        "vlucas/phpdotenv": "^5.4",
+
+      "ext-pdo": "*"
+    }
+    ,
+    "require-dev": {
+        "roave/security-advisories": "dev-latest",
+        "symfony/var-dumper": "^6.0"
+    }
+}
