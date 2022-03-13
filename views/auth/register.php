@@ -11,9 +11,7 @@
                 <input class="input" type="text" name="name" value="<?= old('name'); ?>">
             </div>
             <?php if (app()->session->hasFlash('errors')): ?>
-            <p class="has-text-danger">
-                <?= app()->session->getFlash('errors')['name'][0]; ?>
-            </p>
+            <p class="has-text-danger"><?= app()->session->getFlash('errors')['name'][0]; ?></p>
             <?php endif; ?>
         </div>
 

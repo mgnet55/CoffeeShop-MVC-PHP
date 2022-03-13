@@ -25,18 +25,21 @@
   <div class="login-container">
     <div class="container">
       <div class="logo">Cafeteria</div>
-      
-      <form method="post" action="/login">
+        <?php dump($_SESSION);?>
+      <form method="POST" action="/login">
         <h1>Login</h1>
         <div>
-          <label for="exampleInputEmail1">Username</label>
-          <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email" name="username">
-          <div>[error]</div>
-        </div>
-        <div
+          <label for="exampleInputEmail1">Email</label>
+          <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email" name="email">
+            <div><?php if (app()->session->hasFlash('errors')) {
+                echo app()->session->getFlash('errors')['email'][0]; } ?>
+            </div>
+        <div>
           <label for="exampleInputPassword1">Password</label>
           <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password" name="password">
-          <div>[error]</div>
+            <div><?php if (app()->session->hasFlash('errors')) {
+                    echo app()->session->getFlash('errors')['password'][0]; } ?>
+            </div>
         </div>
         <div class="forget">
          <a href="">Forget Password!</a>

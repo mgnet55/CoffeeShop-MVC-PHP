@@ -7,7 +7,18 @@ class HomeController
 
     public function index()
     {
-        return view('home','main');
+        if (empty($_SESSION['type'])) {
+            header("Location: /login");
+            return;
+        }
+        if ($_SESSION['type'] == 'admin') {
+
+            return view('home', 'main');
+        }
+        if ($_SESSION['type'] == 'user') {
+            return view('home', 'main');
+        }
+
     }
 
     public function test()

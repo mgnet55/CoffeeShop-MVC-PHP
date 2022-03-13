@@ -16,8 +16,8 @@
         </nav>
         <div class="profile">
             <img src="<?=$_SESSION['avatar']?>" width="100px" />
-            <p href=""><?=$_SESSION['username'] ?></p>
-            <a href="">Logout</a>
+            <p href=""><?=$_SESSION['name'] ?></p>
+            <a href="/logout">Logout</a>
         </div>
     </div>
 </header>

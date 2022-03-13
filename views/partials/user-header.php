@@ -13,7 +13,7 @@
         <div class="profile">
             <img src="<?=$_SESSION['avatar']?>" width="100px" />
             <p href=""><?=$_SESSION['username'] ?></p>
-            <a href="">Logout</a>
+            <a href="/logout">Logout</a>
         </div>
     </div>
 </header>

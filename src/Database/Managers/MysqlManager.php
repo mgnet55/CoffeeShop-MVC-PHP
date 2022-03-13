@@ -20,6 +20,7 @@ class MysqlManager implements DatabaseManager
 
     }
 
+
     public function query(string $query, $values = [])
     {
         $stmt = self::$instance->prepare($query);

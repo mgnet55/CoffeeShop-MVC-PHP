@@ -37,4 +37,5 @@ class Request
     public function get($key){
         return Arr::get($this->all(),$key);
     }
+
 }
