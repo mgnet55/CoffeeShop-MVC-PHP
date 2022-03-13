@@ -15,8 +15,8 @@ class RegisterController
     {
         $v = new Validator;
         $v->setRules([
-            'username'=>"required|alphanumeric",
-            'email'=>'email'
+            'username'=>"required|alphanumeric|between:2,20",
+            'email'=>'email|required'
             ]
         );
         $v->setAlias('password_confirmation','password confirmation');
@@ -30,8 +30,8 @@ class RegisterController
 
         User::create(
             [
-                'phone'=>'userdfdfname',
-                'email'=>'email@yahoo.com'
+                'email' => request('email'),
+                'password' => bcrypt(request('password'))
             ]
         );
        app()->session->setFlash('success','Registered Successfully');

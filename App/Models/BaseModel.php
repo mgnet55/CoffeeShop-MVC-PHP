@@ -29,7 +29,6 @@ abstract class BaseModel
 
     public static function where($page,$filter,$columns='*'){
         self::$instance=static::class;
-        dump( static::class);
         return app()->db->read($page,$filter,$columns);
     }
 
