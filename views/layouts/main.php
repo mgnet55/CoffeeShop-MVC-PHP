@@ -1,24 +1,9 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="utf-8"/>
-    <meta name="viewport" content="width=device-width, initial-scale=1"/>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.1/css/bulma.min.css">
-    <title><?= env('APP_NAME') ?></title>
+<?php
+use PhpMvc\Support\Session;
+include VIEWS_PATH . 'partials' . DIRECTORY_SEPARATOR . 'head.php';
+$_SESSION['type'] === 'admin' ? include VIEWS_PATH . 'partials' . DIRECTORY_SEPARATOR . 'admin-header.php' : include VIEWS_PATH . 'partials' . DIRECTORY_SEPARATOR . 'user-header.php';
+?>
 
-    <?php
-    include VIEWS_PATH.'partials/navbar.php'; ?>
-</head>
-<body>
-<div class="container">
-    <hr>
     {{content}}
-</div>
 
-<script
-        src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js"
-        integrity="sha384-ygbV9kiqUc6oa4msXn9868pTtWMgiQaeYH7/t7LECLbyPA2x65Kgf80OJFdroafW"
-        crossorigin="anonymous"
-></script>
-</body>
-</html>
+<?php include VIEWS_PATH.'partials'.DIRECTORY_SEPARATOR.'footer.php'; ?>

@@ -1,0 +1,220 @@
+* {
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: 'Poppins', sans-serif;
+  }
+
+  
+  html {
+    scroll-behavior: smooth;
+  }
+ 
+  :root{
+      --main-color:#91dbfd;
+    
+    
+  }
+  body{
+      background-color: #555;
+  }
+  
+/*
+we add media quaries to the contaner in order to be responsive,
+and don't put width just padding an marign.
+*/
+
+.container{
+    padding-left: 15px;
+    padding-right: 15px;
+    margin-left: auto;
+    margin-right: auto;
+}
+/* small */
+
+@media (max-width:767px){
+    .container{
+        box-sizing: border-box;
+    }
+}
+@media (min-width:768px){
+    .container{
+        width: 750px;
+    }
+}
+/* medium */
+
+@media (min-width:992px){
+    .container{
+        width: 950px;
+    }
+}
+/* large */
+
+@media (min-width:1200px){
+    .container{
+        width: 1170px;
+    }
+}
+
+/*-----------Global Classes-----------*/
+
+a{
+    text-decoration: none;
+}
+ul{
+    list-style: none;
+}
+input{
+    outline: none;
+}
+.btn{
+    font-size: 1rem;
+    background: linear-gradient(120deg, #a1c4fd 0%, #c2e9fb 100%);
+    padding: 1rem 3rem;
+    border-radius: 2rem;
+    border: 2px solid transparent;
+    color: #1c2125;
+    font-weight: 600;
+
+}
+.btn:hover{
+    background: none;
+    border: 2px solid #ffffff;
+    color: #ffffff;
+}
+.submit{
+    font-size: 1rem;
+    background: linear-gradient(120deg, #a1c4fd 0%, #c2e9fb 100%);
+    padding: 1rem 3rem;
+    border-radius: 2rem;
+    border: 2px solid transparent;
+    color: #1c2125;
+    font-weight: 600;
+}
+.submit:hover{
+    background: none;
+    border: 2px solid #ffffff;
+    color: #ffffff;
+}
+/* welcome page */
+
+.big-container{
+    background-image: url(../images/pexels-brigitte-tohm-350343.jpg);
+    background-position: center;
+    background-size: cover;
+    color: #fff;
+    min-height: 100vh;
+}
+.big-container .container .welcomeHeader{
+    padding: 2rem 0 0 0;
+    text-align: center;
+
+}
+.big-container .container .welcomeHeader .logo{
+    font-size: 2.2em;
+    margin-bottom: 1rem;
+    font-family: 'Dancing Script', cursive;
+    color: #91dbfd;
+    font-weight: 600;
+}
+.big-container .container .welcomeHeader nav ul{
+    display: flex;
+    justify-content: center;
+    width: 100%;
+}
+.big-container .container .welcomeHeader nav ul li{
+    padding: 0.3rem 0.5rem;
+    margin-left: 0.3em;
+    transition: 0.5s;
+}
+.big-container .container .welcomeHeader nav ul li:hover a{
+   color: #91dbfd;
+}
+.big-container .container .welcomeHeader nav ul li a{
+      color: #fff;
+      font-size: 1em;
+      transition: 0.5s;
+      font-weight: 600;
+      transition: 0.5s;
+}
+
+/* landing */
+.big-container .container .landing{
+    padding: 10rem 0 0 0 ;
+    text-align: center;
+}
+.big-container .container .landing h2{
+    font-size: 3.2em;
+    margin-bottom: 1rem;
+    color: #333;
+    font-family: 'Dancing Script', cursive;
+}
+.big-container .container .landing p{
+    font-size: 0.7em;
+    margin-bottom: 1rem;
+    color: #333;
+}
+
+
+/* --------------- Login page------------ */
+
+.login-container{
+    background-image: url(../images/pexels-chevanon-photography-302899.jpg);
+    background-position: center;
+    background-size: cover;
+    color: #fff;
+    min-height: 100vh;
+    margin: 0;
+}
+
+.login-container .container{
+    padding-top: 2rem;
+}
+.login-container .container .logo{
+    padding-top: 2rem;
+    font-size: 2.2em;
+    margin-bottom: 1rem;
+    font-family: 'Dancing Script', cursive;
+    color: #91dbfd;
+    font-weight: 600;
+}
+.login-container .container form{
+    background-color: rgba(51, 51, 51, 0.507);
+    padding: 2rem;
+	display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.login-container .container form h1{
+    font-size: 2em;
+    margin-bottom: 1rem;
+    font-family: 'Dancing Script', cursive;
+    color: #fff;
+    font-weight: 600;
+    margin-top: 0;
+}
+
+.login-container .container form input{
+    width: 100%;
+    border: 1.5px solid rgba(255, 255, 255, 0.534);
+    padding: 0.5em;
+    color: #fff;
+    background: none;
+    margin-top: 0.3em;
+    margin-bottom: 1rem;
+}
+.forget a{
+    color: #fff;
+    margin: 1rem 0; 
+    display: inline-block;
+    transition: 0.5s;
+}
+.forget a:hover{
+    color: #91dbfd;
+    transform: translateX(2px);
+}
+
