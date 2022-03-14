@@ -63,7 +63,7 @@ class ProductController
             [
                 'name' => request('name'),
                 'price' => request('price'),
-                'image' => $dbAvatarName,
+                'img' => $dbAvatarName,
                 'available' => '1'
             ]
         );
@@ -83,7 +83,7 @@ class ProductController
         if (isAdmin()||isUser()){
             $available = request()->get('page')?? 1;
             $products = Product::where($available);
-            return view('products','main',[$products]);
+            return view('products','main',['products'=>$products]);
         }
     }
 

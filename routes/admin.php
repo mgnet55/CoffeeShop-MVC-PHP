@@ -18,6 +18,8 @@ Route::GET('product/delete',[ProductController::class,'delete']);
 
 //users management
 Route::GET('users',[UserController::class,'get']);
+Route::GET('users/add',[UserController::class,'get']);
+Route::POST('users/add',[UserController::class,'get']);
 
 
 

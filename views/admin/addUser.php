@@ -1,3 +1,4 @@
+
 <form method="post" action="sign.php" enctype="multipart/form-data">
         <div class="form-row">
           <div class="form-group col-md-6">
@@ -39,3 +40,4 @@
           </div>
         </div>
         <button type="submit" class="btn btn-primary m-2" name="sign">Sign in</button>
+</form>
