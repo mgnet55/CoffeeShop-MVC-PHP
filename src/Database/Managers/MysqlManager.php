@@ -12,7 +12,6 @@ class MysqlManager implements DatabaseManager
     public function connect(): \PDO
     {
         if(!self::$instance){
-
             $dsn = env('DB_DRIVER') . ':host=' . env('DB_HOST')  . ';dbname=' . env('DB_NAME') . ';port=' . env('DB_PORT') . ';charset='.env('DB_CHARSET');
             self::$instance = new \PDO($dsn,env('DB_USERNAME'),env('DB_PASSWORD'));
         }

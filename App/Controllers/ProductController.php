@@ -8,28 +8,26 @@ use PhpMvc\Validation\Validator;
 
 class ProductController
 {
-    #[Pure] public function notAuthorized(): bool
-    {
-        return in_array(userType(), ['user', null], true);
-    }
 
     public function get()
     {
         $id = request('id');
         if (!$id) {
             $this->getAll();
+
             //TODO:return table view in layout
         }
         $this->getOne($id);
-            //TODO:return only one product in layout
+
+          //TODO:return only one product in layout
 
     }
 
     public function store()
     {
         //from post // if not admin return error
-        if ($this->notAuthorized()) {
-            return view('errors.404');
+        if (!$this->isAdmin()) {
+            return view('errors.403');
         }
         $v = new Validator;
         $v->setRules([
@@ -69,14 +67,12 @@ class ProductController
                 'available' => '1'
             ]
         );
-
-
     }
 
     public function update()
     {
-        if ($this->notAuthorized()) {
-            return view('errors.404');
+        if (!$this->isAdmin()) {
+            return view('errors.403');
         }
         //TODO:get data ,verify and save
 
@@ -84,8 +80,11 @@ class ProductController
 
     public function getAvaialable()
     {
-        //return products availabe only
-
+        if (isAdmin()||isUser()){
+            $available = request()->get('page')?? 1;
+            $products = Product::where($available);
+            return view('products','main',[$products]);
+        }
     }
 
     public function delete()
@@ -102,5 +101,8 @@ class ProductController
     {
 
     }
+
+    //TODO user/admin get available
+    //TODO admin get available : when admin makes user order
 
 }

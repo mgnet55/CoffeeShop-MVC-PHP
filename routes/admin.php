@@ -1,8 +1,8 @@
 <?php
 
-
 //products
 use App\Controllers\ProductController;
+use App\Controllers\UserController;
 use PhpMvc\Http\Route;
 
 //products management

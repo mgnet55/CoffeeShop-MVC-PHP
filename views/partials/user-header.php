@@ -12,7 +12,7 @@
         </nav>
         <div class="profile">
             <img src="<?=$_SESSION['avatar']?>" width="100px" />
-            <p href=""><?=$_SESSION['username'] ?></p>
+            <p href=""><?=$_SESSION['name'] ?></p>
             <a href="/logout">Logout</a>
         </div>
     </div>

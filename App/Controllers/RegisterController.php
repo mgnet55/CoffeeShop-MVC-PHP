@@ -9,11 +9,16 @@ class RegisterController
 {
     public function index()
     {
+        if(!isAdmin())
+        {return view('erros.403');}
         return view('auth.register', 'main');
     }
 
     public function store()
     {
+        if(!isAdmin())
+        {return view('erros.403');}
+
         $v = new Validator;
         $v->setRules([
                 'username' => "required|alphanumeric|between:8,20",
@@ -62,6 +67,5 @@ class RegisterController
         app()->session->setFlash('success', 'Registered Successfully');
         return back();
     }
-
 
 }

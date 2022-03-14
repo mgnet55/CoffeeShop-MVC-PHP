@@ -13,7 +13,7 @@ class HomeController
         }
         if ($_SESSION['type'] == 'admin') {
 
-            return view('home', 'main');
+            return view('home', 'main',);
         }
         if ($_SESSION['type'] == 'user') {
             return view('home', 'main');

@@ -6,6 +6,7 @@ use PhpMvc\View\View;
 
 class Route
 {
+
     public static array $routes = [];
     protected Request $request;
     protected Response $response;
@@ -15,13 +16,6 @@ class Route
         $this->request = $request;
         $this->response = $response;
     }
-
-
-    public static function group(){
-
-    }
-
-
 
     public static function GET($route, callable|array|string $action): void
     {
@@ -34,7 +28,6 @@ class Route
         $route = trim($route, "/");
         self::$routes['POST'][$route] = $action;
     }
-
     public function resolve()
     {
         $path = $this->request->path();

@@ -4,7 +4,6 @@ namespace PhpMvc\Database\Grammars;
 
 use App\Models\BaseModel;
 use JetBrains\PhpStorm\Pure;
-
 class MysqlGrammar
 {
     #[Pure] public static function buildInsertQuery($keys): string

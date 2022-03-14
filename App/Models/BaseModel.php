@@ -10,7 +10,6 @@ abstract class BaseModel
         self::$instance = static::class;
         return app()->db->create($attributes);
     }
-
     public static function query($query){
         self::$instance = static::class;
         return app()->db->raw($query);

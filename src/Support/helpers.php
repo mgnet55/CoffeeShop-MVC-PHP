@@ -1,5 +1,6 @@
 <?php
 
+use JetBrains\PhpStorm\Pure;
 use PhpMvc\Application;
 use PhpMvc\Http\Request;
 use PhpMvc\Http\Response;
@@ -85,7 +86,6 @@ if (!function_exists('classBaseName')) {
     }
 }
 
-
 if (!function_exists('request')) {
     function request($key = null)
     {
@@ -105,13 +105,6 @@ if (!function_exists('request')) {
     }
 }
 
-if (!function_exists('back')) {
-    function back()
-    {
-        return (new Response())->back();
-    }
-}
-
 if (!function_exists('userType')) {
     function userType()
     {
@@ -122,21 +115,40 @@ if (!function_exists('userType')) {
     }
 }
 
+if (!function_exists('isUser')){
+    #[Pure] function isUser():bool{
+        return userType() === 'user';
+    }
+}
+if (!function_exists('isAdmin')) {
+    #[Pure] function isAdmin(): bool
+    {
+        return userType() === 'admin';
+    }
+}
 
+//errors handlers and values
 if (!function_exists('getErrorMsg')) {
-    function getErrorMsg($fieldname)
+    function getErrorMsg($fieldName)
     {
         if (app()->session->hasFlash('errors')) {
-            return app()->session->getFlash('errors')[$fieldname][0] ?? '';
+            return app()->session->getFlash('errors')[$fieldName][0] ?? '';
         }
     }
 }
 
 if (!function_exists('old')) {
-    function old($fieldname)
+    function old($fieldName)
     {
         if (app()->session->hasFlash('old')) {
-            return app()->session->getFlash('old')[$fieldname];
+            return app()->session->getFlash('old')[$fieldName];
         }
+    }
+}
+
+if (!function_exists('back')) {
+    function back()
+    {
+        return (new Response())->back();
     }
 }
