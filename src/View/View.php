@@ -1,5 +1,4 @@
 <?php
-
 namespace PhpMvc\View;
 class View
 {
@@ -50,8 +49,6 @@ class View
             include($view);
             return ob_get_clean();
         }
-
-
     }
 
     public static function makeError(string $error)

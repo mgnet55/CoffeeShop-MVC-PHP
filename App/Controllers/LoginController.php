@@ -1,5 +1,4 @@
 <?php
-
 namespace App\Controllers;
 
 use App\Models\Admin;
@@ -19,13 +18,13 @@ class LoginController
         $v = new Validator;
         $v->setRules([
                 'email' => 'email|required',
-                'password' => 'required'
+                'password' => 'required|minlength:8'
             ]
         );
-        $v->setAliases(['email' => 'Email address', 'password' => 'Password']);
+        $v->setAliases(['email' => 'Email', 'password' => 'Password']);
         $v->validate(request()->all());
         if (!$v->isValid()) {
-            app()->session->setFlash('$errors', $v->getErrors());
+            app()->session->setFlash('errors', $v->getErrors());
             app()->session->setFlash('old', request()->all());
             header('location:./login');
             return;

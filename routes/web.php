@@ -17,3 +17,4 @@ Route::POST('register',[RegisterController::class,'store']);
 Route::GET('login',[LoginController::class,'index']);
 Route::POST('login',[LoginController::class,'login']);
 Route::GET('logout',[LoginController::class,'logout']);
+

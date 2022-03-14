@@ -1,28 +1,32 @@
 <?php
+
 use PhpMvc\Application;
 use PhpMvc\Http\Request;
 use PhpMvc\Http\Response;
 use PhpMvc\Support\Hash;
 use PhpMvc\View\View;
 
-define("BASE_PATH", dirname(__DIR__) . DIRECTORY_SEPARATOR.'..'.DIRECTORY_SEPARATOR);
-const VIEWS_PATH = BASE_PATH . 'views'.DIRECTORY_SEPARATOR;
-const CONFIG_PATH = BASE_PATH . 'config'.DIRECTORY_SEPARATOR;
-const LAYOUTS_PATH = BASE_PATH.'views'.DIRECTORY_SEPARATOR.'layouts'.DIRECTORY_SEPARATOR;
+define("BASE_PATH", dirname(__DIR__) . DIRECTORY_SEPARATOR . '..' . DIRECTORY_SEPARATOR);
+const VIEWS_PATH = BASE_PATH . 'views' . DIRECTORY_SEPARATOR;
+const CONFIG_PATH = BASE_PATH . 'config' . DIRECTORY_SEPARATOR;
+const LAYOUTS_PATH = BASE_PATH . 'views' . DIRECTORY_SEPARATOR . 'layouts' . DIRECTORY_SEPARATOR;
+const UPLOAD_PATH = BASE_PATH . 'uploads' . DIRECTORY_SEPARATOR;
+const PRODUCT_PATH = BASE_PATH . 'assets' . DIRECTORY_SEPARATOR . 'product' . DIRECTORY_SEPARATOR;
 
-if (!function_exists('config')){
-    function config($key=null,$value=null){
+if (!function_exists('config')) {
+    function config($key = null, $value = null)
+    {
         // no key sent -> return full config dump
-        if(is_null($key)){
+        if (is_null($key)) {
             return app()->config;
         }
         //key sent is associative -> set as key=value
-        if (is_array($key)){
-            return app()->config->offsetSet(array_keys($key),array_values($key));
+        if (is_array($key)) {
+            return app()->config->offsetSet(array_keys($key), array_values($key));
         }
         //sent key string with value -> set it
-        if(!is_null($value)){
-           return app()->config->offsetSet($key,$value);
+        if (!is_null($value)) {
+            return app()->config->offsetSet($key, $value);
         }
         //sent key string without value -> return its value
         return app()->config->offsetGet($key);
@@ -44,14 +48,14 @@ if (!function_exists('value')) {
 }
 
 if (!function_exists('view')) {
-    function view($view,$layout=null, $params = [])
+    function view($view, $layout = null, $params = [])
     {
-        View::make($view,$layout, $params);
+        View::make($view, $layout, $params);
     }
 }
 
 if (!function_exists('app')) {
-    function app():Application
+    function app(): Application
     {
         static $instance = null;
 
@@ -62,48 +66,77 @@ if (!function_exists('app')) {
     }
 }
 
-if (!function_exists('bcrypt')){
-    function bcrypt($password): string{
+if (!function_exists('bcrypt')) {
+    function bcrypt($password): string
+    {
         return Hash::password($password);
     }
 }
 
-if (!function_exists('classBaseName')){
-    function classBaseName($class){
-        if (!$class){return null;}
-        $class =  is_object($class) ? get_class($class) :$class;
-        preg_match('/[^\\\/]+$/',$class,$match);
+if (!function_exists('classBaseName')) {
+    function classBaseName($class)
+    {
+        if (!$class) {
+            return null;
+        }
+        $class = is_object($class) ? get_class($class) : $class;
+        preg_match('/[^\\\/]+$/', $class, $match);
         return $match;
     }
 }
 
+
+if (!function_exists('request')) {
+    function request($key = null)
+    {
+        $instance = new Request;
+        if (!$instance) {
+            return new Request();
+        }
+        if ($key) {
+            if (is_string($key)) {
+                return $instance->get($key);
+            }
+            if (is_array($key)) {
+                return $instance->only($key);
+            }
+        }
+        return $instance;
+    }
+}
+
+if (!function_exists('back')) {
+    function back()
+    {
+        return (new Response())->back();
+    }
+}
+
+if (!function_exists('userType')) {
+    function userType()
+    {
+        if (empty($_SESSION) || !$_SESSION['type']) {
+            return null;
+        }
+        return $_SESSION['type'];
+    }
+}
+
+
+if (!function_exists('getErrorMsg')) {
+    function getErrorMsg($fieldname)
+    {
+        if (app()->session->hasFlash('errors')) {
+            return app()->session->getFlash('errors')[$fieldname][0] ?? '';
+        }
+    }
+}
+
 if (!function_exists('old')) {
-    function old($key)
+    function old($fieldname)
     {
         if (app()->session->hasFlash('old')) {
-            return app()->session->getFlash('old')[$key];
-        }
-    }
-
-    if (!function_exists('request')) {
-        function request($key = null)
-        {
-            $instance = new Request;
-            if (!$instance) {return new Request();}
-            if ($key) {
-                if (is_string($key)) {return $instance->get($key);}
-                if (is_array($key)) {
-                    return $instance->only($key);
-                }
-            }
-            return $instance;
-        }
-    }
-
-    if (!function_exists('back')) {
-        function back()
-        {
-            return (new Response())->back();
+            return app()->session->getFlash('old')[$fieldname];
         }
     }
 }

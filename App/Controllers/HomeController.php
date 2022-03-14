@@ -21,8 +21,4 @@ class HomeController
 
     }
 
-    public function test()
-    {
-        return 'hello world';
-    }
 }

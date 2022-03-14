@@ -1,11 +1,10 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Login</title>
+  <title><?=env('APP_NAME')?></title>
   <link rel="stylesheet" href="normalize.css" />
   <link rel="stylesheet" href="css/all.min.css" />
   <link rel="stylesheet" href="css/login.css" />
@@ -25,21 +24,16 @@
   <div class="login-container">
     <div class="container">
       <div class="logo">Cafeteria</div>
-        <?php dump($_SESSION);?>
       <form method="POST" action="/login">
         <h1>Login</h1>
         <div>
           <label for="exampleInputEmail1">Email</label>
-          <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email" name="email">
-            <div><?php if (app()->session->hasFlash('errors')) {
-                echo app()->session->getFlash('errors')['email'][0]; } ?>
-            </div>
+          <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email" name="email" value="<?=old('email')?>">
+            <span><?=getErrorMsg('email')?></span>
         <div>
           <label for="exampleInputPassword1">Password</label>
           <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password" name="password">
-            <div><?php if (app()->session->hasFlash('errors')) {
-                    echo app()->session->getFlash('errors')['password'][0]; } ?>
-            </div>
+            <div><?=getErrorMsg('password')?></div>
         </div>
         <div class="forget">
          <a href="">Forget Password!</a>
