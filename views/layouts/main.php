@@ -1,10 +1,7 @@
 <?php
 use PhpMvc\Support\Session;
 include VIEWS_PATH . 'partials' . DIRECTORY_SEPARATOR . 'head.php';
-if(!empty($_SESSION) && $_SESSION['type'] == 'admin') {
-    include (VIEWS_PATH . 'partials' . DIRECTORY_SEPARATOR . 'admin-header.php');
-}
-else{ include VIEWS_PATH . 'partials' . DIRECTORY_SEPARATOR . 'user-header.php';}
+isAdmin() ?  include (VIEWS_PATH . 'partials' . DIRECTORY_SEPARATOR . 'admin-header.php') : include VIEWS_PATH . 'partials' . DIRECTORY_SEPARATOR . 'user-header.php';
 ?>
 
     {{content}}
