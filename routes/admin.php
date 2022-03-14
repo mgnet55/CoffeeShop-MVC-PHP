@@ -6,19 +6,16 @@ use App\Controllers\UserController;
 use PhpMvc\Http\Route;
 
 //products management
-Route::GET('product/',[ProductController::class,'get']);
-
-Route::GET('product/add', static function(){return view('products.add','main');});
-Route::POST('product/add',[ProductController::class,'store']);
-
-Route::GET('product/edit',[ProductController::class,'get']);
-Route::POST('product/edit',[ProductController::class,'update']);
-
-Route::GET('product/delete',[ProductController::class,'delete']);
+Route::GET('products',[ProductController::class,'get']);
+Route::GET('products/add', static function(){return view('products.add','main');});
+Route::POST('products/add',[ProductController::class,'store']);
+Route::GET('products/edit',[ProductController::class,'get']);
+Route::POST('products/edit',[ProductController::class,'update']);
+Route::GET('products/delete',[ProductController::class,'delete']);
 
 //users management
 Route::GET('users',[UserController::class,'get']);
-Route::GET('users/add',[UserController::class,'get']);
+Route::GET('users/add',[UserController::class,'new']);
 Route::POST('users/add',[UserController::class,'get']);
 
 

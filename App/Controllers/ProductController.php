@@ -3,23 +3,21 @@
 namespace App\Controllers;
 
 use App\Models\Product;
-use JetBrains\PhpStorm\Pure;
 use PhpMvc\Validation\Validator;
 
 class ProductController
 {
-
     public function get()
     {
         $id = request('id');
         if (!$id) {
-            $this->getAll();
-
-            //TODO:return table view in layout
+            $products = $this->getAll();
+            return view('admin.products','main',['products'=>$products]);
         }
-        $this->getOne($id);
+        $product = $this->getOne($id);
+        return view('admin.products','main',['products'=>$product]);
 
-          //TODO:return only one product in layout
+        //TODO:return only one product in layout
 
     }
 
@@ -80,26 +78,29 @@ class ProductController
 
     public function getAvaialable()
     {
-        if (isAdmin()||isUser()){
-            $available = request()->get('page')?? 1;
+        if (isAdmin() || isUser()) {
+            $available = request()->get('page') ?? 1;
             $products = Product::where($available);
-            return view('products','main',['products'=>$products]);
+            return view('products', 'main', ['products' => $products]);
         }
     }
 
     public function delete()
     {
-
     }
 
     public function getOne($id)
     {
-
+        return Product::where(1,['id=',$id]);
     }
 
-    public function getAll()
+    public function getAll(): array
     {
-
+        if (isAdmin()) {
+            $page = request()->get('page') ?? 1;
+            return Product::all($page);
+        }
+        return [];
     }
 
     //TODO user/admin get available
