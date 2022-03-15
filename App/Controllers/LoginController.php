@@ -4,6 +4,9 @@ namespace App\Controllers;
 use App\Models\Admin;
 use App\Models\User;
 use PhpMvc\Validation\Validator;
+use function app;
+use function request;
+use function view;
 
 class LoginController
 {
@@ -46,8 +49,12 @@ class LoginController
                 app()->session->set($property, $value);
             }
             app()->session->set('type', $type);
+            if($type === 'admin'){header('Location:/admin'); return; }
+
             header('Location:/home');
             return;
+//            header('Location:/home');
+//            return;
         }
         app()->session->setFlash('old', request()->all());
         header('location:./login');

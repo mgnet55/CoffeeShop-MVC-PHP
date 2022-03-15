@@ -7,12 +7,13 @@ use PhpMvc\Http\Response;
 use PhpMvc\Support\Hash;
 use PhpMvc\View\View;
 
-define("BASE_PATH", dirname(__DIR__) . DIRECTORY_SEPARATOR . '..' . DIRECTORY_SEPARATOR);
-const VIEWS_PATH = BASE_PATH . 'views' . DIRECTORY_SEPARATOR;
-const CONFIG_PATH = BASE_PATH . 'config' . DIRECTORY_SEPARATOR;
-const LAYOUTS_PATH = BASE_PATH . 'views' . DIRECTORY_SEPARATOR . 'layouts' . DIRECTORY_SEPARATOR;
-const UPLOAD_PATH = BASE_PATH . 'uploads' . DIRECTORY_SEPARATOR;
-const PRODUCT_PATH = BASE_PATH . 'assets' . DIRECTORY_SEPARATOR . 'product' . DIRECTORY_SEPARATOR;
+const DS = DIRECTORY_SEPARATOR;
+define("BASE_PATH", dirname(__DIR__) . DS . '..' . DS);
+const VIEWS_PATH = BASE_PATH . 'views' . DS;
+const CONFIG_PATH = BASE_PATH . 'config' . DS;
+const LAYOUTS_PATH = BASE_PATH . 'views' . DS . 'layouts' . DS;
+const UPLOAD_PATH = BASE_PATH . 'uploads' . DS;
+const PRODUCT_PATH = BASE_PATH . 'assets' . DS . 'product' . DS;
 
 if (!function_exists('config')) {
     function config($key = null, $value = null)
