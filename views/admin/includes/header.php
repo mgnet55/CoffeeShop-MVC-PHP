@@ -75,10 +75,17 @@
           <li class="nav-item">
             <a href="/admin/users" class="nav-link"><i class="nav-icon fa fa-user"></i><p>Users</p></a>
           </li>
+          <li class="nav-item"><a href="/admin/addUser" class="nav-link"><i class="nav-icon fa fa-user"></i><p>Add User</p></a>
+          </li>
           <li class="nav-item">
               <a href="/admin/products" class="nav-link"><i class="nav-icon fa fa-coffee"></i><p>Products</p></a>
           </li>
+            <li class="nav-item"><a href="/admin/addProduct" class="nav-link"><i class="nav-icon fa fa-coffee"></i><p>Add Product</p></a>
+          </li>
+
+
             <li class="nav-item"><a href="/admin/orders" class="nav-link"><i class="nav-icon fa fa-shopping-cart"></i><p>Orders</p></a></li>
+            <li class="nav-item"><a href="/admin/manual_orders" class="nav-link"><i class="nav-icon fa fa-shopping-cart"></i><p>Manual Orders</p></a></li>
 
           </ul></nav>
       <!-- /.sidebar-menu -->

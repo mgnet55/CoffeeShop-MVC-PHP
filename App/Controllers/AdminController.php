@@ -17,19 +17,9 @@ class AdminController
         return View('errors.403');
 
     }
-    //TODO  PRODUCTS functions===============================================
-    //add product GET returns form // POST checks and save product
-    //delete product GET id
-    //get all products
-    //get product
-    //edit product GET / POST
+ 
 
-    //TODO  ORDERS functions===============================================
-    //add order for user {returns all products and users}
-    //delete order GET id
-    //get pending orders GET
-    //get all orders GET
-    //edit product GET / POST
+
 
     //TODO  USER functions===============================================
     //add user Get returns form // POST checks and save
@@ -38,7 +28,12 @@ class AdminController
     //edit user GET returns user form // POST checks and save
     public function getAddUser()
     {
-
+        if (isAdmin()) {
+            // $page = request()->get('page') ?? 1;
+            // $users = User::all($page);
+            return view('admin.addUser', 'admin');
+        }
+        return view('errors.403');
     }
 
     public function postAddUser()
@@ -71,10 +66,24 @@ class AdminController
     }
 
 
+
+
     //product function
+    //TODO  PRODUCTS functions===============================================
+    //add product GET returns form // POST checks and save product
+    //delete product GET id
+    //get all products
+    //get product
+    //edit product GET / POST
+    
     public function GetaddProduct()
     {
-
+        if (isAdmin()) {
+            // $page = request()->get('page') ?? 1;
+            // $users = User::all($page);
+            return view('admin.addProduct', 'admin');
+        }
+        return view('errors.403');
     }
 
     public function postAddProduct()
@@ -108,7 +117,16 @@ class AdminController
     }
 
 
+
+
     //order functions
+    //TODO  ORDERS functions===============================================
+    //add order for user {returns all products and users}
+    //delete order GET id
+    //get pending orders GET
+    //get all orders GET
+    //edit product GET / POST
+
     public function allOrders()
     {
         if (isAdmin()) {
@@ -118,5 +136,15 @@ class AdminController
         }
         return view('errors.403');
     }
+
+    public function manualOrders(){
+        if (isAdmin()) {
+            // $page = request()->get('page') ?? 1;
+            // $users = User::all($page);
+            return view('admin.manual_orders', 'admin');
+        }
+        return view('errors.403');
+    }
+
 
 }
