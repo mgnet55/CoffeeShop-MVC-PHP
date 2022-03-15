@@ -6,7 +6,7 @@
                   </div>
                   <!-- /.card-header -->
                   <!-- form start -->
-<form id="quickForm">
+<form id="quickForm" method="POST" action="/admin/users/add">
 
                 <div class="card-body">
 
@@ -38,7 +38,7 @@
 
                     <label for="confirmPassword">confirm password</label>
 
-                    <input type="password" name="confirmPassword" class="form-control" id="confirmPassword" placeholder="confirmPassword">
+                    <input type="password" name="password_confirmation" class="form-control" id="confirmPassword" placeholder="confirmPassword">
 
                   </div>
 
@@ -66,17 +66,12 @@
 
                           <div class="custom-file">
 
-                            <input type="file" class="custom-file-input" id="inputFile">
+                            <label class="custom-file-label" for="inputFile">Choose image</label>
 
-                            <label class="custom-file-label" for="inputFile" name="avatar">Choose image</label>
-
-                          </div>
-
-                          <div class="input-group-append">
-
-                            <span class="input-group-text">Upload</span>
+                            <input class="custom-file-input" type="file" accept="image/png, image/gif, image/jpeg" id="avatar" name="avatar">
 
                           </div>
+
 
                         </div>
 
