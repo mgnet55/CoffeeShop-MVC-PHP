@@ -21,7 +21,7 @@ class AdminController
         return View('errors.403');
 
     }
- 
+
 
 
 
@@ -41,10 +41,10 @@ class AdminController
     }
 
     public function store()
-    {       
-        dump($_FILES);exit;
-        if(!isAdmin())
-        {return view('erros.403');}
+    {
+        if (!isAdmin()) {
+            return view('erros.403');
+        }
 
         $v = new Validator;
         $v->setRules([
@@ -71,8 +71,6 @@ class AdminController
             return back();
         }
 
- 
-
 
         $file = $_FILES['avatar']['tmp_name'];
         $fileType = mime_content_type($file);
@@ -93,7 +91,7 @@ class AdminController
         }
 
         User::create(
-            [                
+            [
                 'name' => request('name'),
                 'email' => request('email'),
                 'avatar' => $dbAvatarName,
@@ -131,7 +129,7 @@ class AdminController
         if (isAdmin()) {
             $page = request()->get('page') ?? 1;
             $users = User::all($page);
-            return view('admin.users', 'admin', ['users' => $users,'page'=>$page]);
+            return view('admin.users', 'admin', ['users' => $users, 'page' => $page]);
         }
         return view('errors.403');
     }
@@ -146,8 +144,8 @@ class AdminController
     //get all products
     //get product
     //edit product GET / POST
-    
-    public function GetaddProduct()
+
+    public function addGetProduct()
     {
         if (isAdmin()) {
             // $page = request()->get('page') ?? 1;
@@ -208,7 +206,8 @@ class AdminController
         return view('errors.403');
     }
 
-    public function manualOrders(){
+    public function manualOrders()
+    {
         if (isAdmin()) {
             // $page = request()->get('page') ?? 1;
             // $users = User::all($page);

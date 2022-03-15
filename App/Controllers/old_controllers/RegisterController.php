@@ -5,13 +5,7 @@ namespace App\Controllers\old_controllers;
 use Exception;
 use App\Models\User;
 use PhpMvc\Validation\Validator;
-use function app;
-use function App\Controllers\str_contains;
-use function back;
-use function bcrypt;
-use function isAdmin;
-use function request;
-use function view;
+
 
 class RegisterController
 {

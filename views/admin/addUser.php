@@ -6,7 +6,7 @@
                   </div>
                   <!-- /.card-header -->
                   <!-- form start -->
-<form id="quickForm" method="POST" action="/admin/users/add">
+<form id="quickForm" method="POST" action="/admin/users/add" enctype="multipart/form-data">
 
                 <div class="card-body">
 

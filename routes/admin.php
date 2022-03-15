@@ -32,7 +32,7 @@ Route::POST('admin/users/add',[AdminController::class,'store']);
 
 //products management
 Route::GET('admin/products',[AdminController::class,'allProducts']);
-Route::GET('admin/products/add',[AdminController::class,'GetaddProduct']);
+Route::GET('admin/products/add',[AdminController::class,'addGetProduct']);
 Route::POST('admin/products/add',[AdminController::class,'addProduct']);
 
 //orders management
