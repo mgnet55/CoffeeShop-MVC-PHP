@@ -6,6 +6,10 @@ use App\Models\Order;
 use App\Models\Product;
 use App\Models\User;
 
+use Exception;
+
+use PhpMvc\Validation\Validator;
+
 class AdminController
 {
     public function index()
@@ -35,6 +39,73 @@ class AdminController
         }
         return view('errors.403');
     }
+
+    public function store()
+    {       
+        dump($_FILES);exit;
+        if(!isAdmin())
+        {return view('erros.403');}
+
+        $v = new Validator;
+        $v->setRules([
+                'email' => 'required|email',
+                'name' => 'required|chars|minlength:4',
+                'password' => 'required|confirmed',
+                'room' => 'required|numeric',
+                'ext' => 'required|numeric',
+            ]
+        );
+        $v->setAlias('password_confirmation', 'Password confirmation');
+        $v->validate(request()->all());
+
+        if (!$v->isValid()) {
+            app()->session->setflash('errors', $v->getErrors());
+            app()->session->setflash('old', request()->all());
+            return back();
+        }
+
+        //handle file upload and if wrong don't save , else upload and save it to uploads folder
+        //file upload to be implemented in helper functions
+        if (empty($_FILES['avatar']['tmp_name'])) {
+
+            return back();
+        }
+
+ 
+
+
+        $file = $_FILES['avatar']['tmp_name'];
+        $fileType = mime_content_type($file);
+        $fileExtension = substr($fileType, 6);
+        if (str_contains($fileType, "image")) {
+            try {
+
+                $string = str_replace(' ', '-', request('email')); // Replaces all spaces with hyphens.
+                $string = preg_replace('/[^A-Za-z0-9\-]/', '', $string); // Removes special chars.
+
+                move_uploaded_file($file, UPLOAD_PATH . $string . '_avatar.' . $fileExtension);
+                $dbAvatarName = $string . '_avatar.' . $fileExtension;
+            } catch (Exception $e) {
+                return $e->getMessage();
+            }
+        } else {
+            return back();
+        }
+
+        User::create(
+            [                
+                'name' => request('name'),
+                'email' => request('email'),
+                'avatar' => $dbAvatarName,
+                'password' => bcrypt(request('password')),
+                'room' => request('room'),
+                'ext' => request('ext')
+            ]
+        );
+        app()->session->setFlash('success', 'Registered Successfully');
+        return back();
+    }
+
 
     public function postAddUser()
     {

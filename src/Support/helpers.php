@@ -12,7 +12,7 @@ define("BASE_PATH", dirname(__DIR__) . DS . '..' . DS);
 const VIEWS_PATH = BASE_PATH . 'views' . DS;
 const CONFIG_PATH = BASE_PATH . 'config' . DS;
 const LAYOUTS_PATH = BASE_PATH . 'views' . DS . 'layouts' . DS;
-const UPLOAD_PATH = BASE_PATH . 'uploads' . DS;
+const UPLOAD_PATH = BASE_PATH .DS.'Public'. 'uploads' . DS;
 const PRODUCT_PATH = BASE_PATH . 'assets' . DS . 'product' . DS;
 
 if (!function_exists('config')) {

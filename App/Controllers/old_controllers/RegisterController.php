@@ -2,7 +2,7 @@
 
 namespace App\Controllers\old_controllers;
 
-use App\Controllers\Exception;
+use Exception;
 use App\Models\User;
 use PhpMvc\Validation\Validator;
 use function app;

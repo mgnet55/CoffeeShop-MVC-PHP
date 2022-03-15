@@ -28,7 +28,7 @@ Route::GET('admin',[AdminController::class,'index']);
 ////users management
 Route::GET('admin/users',[AdminController::class,'allUsers']);
 Route::GET('admin/users/add',[AdminController::class,'getAddUser']);
-Route::POST('admin/users/add',[AdminController::class,'addUser']);
+Route::POST('admin/users/add',[AdminController::class,'store']);
 
 //products management
 Route::GET('admin/products',[AdminController::class,'allProducts']);
