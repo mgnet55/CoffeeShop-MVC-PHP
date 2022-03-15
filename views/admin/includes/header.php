@@ -75,56 +75,41 @@
                     data-accordion="false">
                     <!-- Add icons to the links using the .nav-icon class
                          with font-awesome or any other icon font library -->
-                    <!--            users-->
+
                     <li class="nav-item">
-                        <a href="#" class="nav-link">
-                            <i class="nav-icon fa fa-user"></i>
-                            <p>
-                                Users
-                                <i class="fas fa-angle-left right"></i>
-                            </p>
-                        </a>
+                        <a href="#" class="nav-link"><i class="nav-icon fa fa-user"></i><p>Users<i class="fas fa-angle-left right"></i></p></a>
                         <ul class="nav nav-treeview">
-                            <li class="nav-item">
-                                <a href="../tables/simple.html" class="nav-link">
-                                    <i class="fa-asterisk"></i>
-                                    <p>All</p>
-                                </a>
-                            </li>
-                            <li class="nav-item"><a href="/admin/users/add" class="nav-link"><i
-                                            class="nav-icon fa fa-plus"></i>
-                                    <p>Add User</p></a></li>
-
-
+                            <li class="nav-item"><a href="/admin/users" class="nav-link"><i class="nav-icon fa fa-asterisk"></i><p>All</p></a></li>
+                            <li><li class="nav-item"><a href="/admin/users/add" class="nav-link"><i class="nav-icon fa fa-plus"></i><p>Add User</p></a></li>
                         </ul>
                     </li>
 
-                    products
-                    orders
-                    categories
+                    <li class="nav-item">
+                        <a href="#" class="nav-link"><i class="nav-icon fa fa-coffee"></i><p>Products<i class="fas fa-angle-left right"></i></p></a>
+                        <ul class="nav nav-treeview">
+                            <li class="nav-item"><a href="/admin/products" class="nav-link"><i class="nav-icon fa fa-asterisk"></i><p>All</p></a></li>
+                            <li class="nav-item"><a href="/admin/products/add" class="nav-link"><i class="nav-icon fa fa-plus"></i><p>Add Product</p></a></>
+                        </ul>
+                    </li>
 
                     <li class="nav-item">
-                        <a href="/admin/users" class="nav-link"><i class="nav-icon fa fa-user"></i>
-                            <p>Users</p></a>
+                        <a href="#" class="nav-link"><i class="nav-icon fa fa-shopping-cart"></i><p>Orders<i class="fas fa-angle-left right"></i></p></a>
+                        <ul class="nav nav-treeview">
+                            <li class="nav-item"><a href="/admin/orders" class="nav-link"><i class="nav-icon fa fa-asterisk"></i><p>All</p></a></li>
+                            <li class="nav-item"><a href="/admin/orders/processing" class="nav-link"><i class="nav-icon fa fa-clock-o"></i><p>Processing</p></a></li>
+                            <li class="nav-item"><a href="/admin/orders/add" class="nav-link"><i class="nav-icon fa fa-plus"></i><p>Add Order</p></a></li>
+                        </ul>
                     </li>
-                    <li class="nav-item"><a href="/admin/addUser" class="nav-link"><i class="nav-icon fa fa-user"></i>
-                            <p>Add User</p></a></li>
+
+                    <li class="nav-item"><a href="/admin/orders" class="nav-link"><i class="nav-icon fa fa-list-alt "></i><p>Checks</p></a></li>
+
                     <li class="nav-item">
-                        <a href="/admin/products" class="nav-link"><i class="nav-icon fa fa-coffee"></i>
-                            <p>Products</p></a>
+                        <a href="#" class="nav-link"><i class="nav-icon fa fa-th-list"></i><p>Categories<i class="fas fa-angle-left right"></i></p></a>
+                        <ul class="nav nav-treeview">
+                            <li class="nav-item"><a href="/admin/categories" class="nav-link"><i class="nav-icon fa fa-asterisk"></i><p>All</p></a></li>
+                            <li class="nav-item"><a href="/admin/categories/add" class="nav-link"><i class="nav-icon fa fa-plus"></i><p>Add Category</p></a></>
+                        </ul>
                     </li>
-                    <li class="nav-item"><a href="/admin/addProduct" class="nav-link"><i
-                                    class="nav-icon fa fa-coffee"></i>
-                            <p>Add Product</p></a>
-                    </li>
-
-
-                    <li class="nav-item"><a href="/admin/orders" class="nav-link"><i
-                                    class="nav-icon fa fa-shopping-cart"></i>
-                            <p>Orders</p></a></li>
-                    <li class="nav-item"><a href="/admin/manual_orders" class="nav-link"><i
-                                    class="nav-icon fa fa-shopping-cart"></i>
-                            <p>Manual Orders</p></a></li>
 
                 </ul>
             </nav>
