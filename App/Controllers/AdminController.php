@@ -77,7 +77,6 @@ class AdminController
         $fileExtension = substr($fileType, 6);
         if (str_contains($fileType, "image")) {
             try {
-
                 $string = str_replace(' ', '-', request('email')); // Replaces all spaces with hyphens.
                 $string = preg_replace('/[^A-Za-z0-9\-]/', '', $string); // Removes special chars.
 
