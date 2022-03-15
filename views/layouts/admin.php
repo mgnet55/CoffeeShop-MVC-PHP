@@ -1,5 +1,5 @@
-<?php include VIEWS_PATH . 'admin' . DIRECTORY_SEPARATOR . 'includes' . DIRECTORY_SEPARATOR . 'header.php'; ?>
+<?php include VIEWS_PATH . 'admin' . DS . 'includes' . DS . 'header.php'; ?>
 
 {{content}}
 
-<?php include VIEWS_PATH . 'admin' . DIRECTORY_SEPARATOR . 'includes' . DIRECTORY_SEPARATOR . 'footer.php'; ?>
+<?php include VIEWS_PATH . 'admin' . DS . 'includes' . DS . 'footer.php'; ?>

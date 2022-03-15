@@ -20,14 +20,14 @@ class View
     protected static function getViewContent($view, $isError = false, array $params = [])
     {
         //if there is an error return 404 page
-        $path = $isError ? VIEWS_PATH . 'errors'.DIRECTORY_SEPARATOR : VIEWS_PATH;
+        $path = $isError ? VIEWS_PATH . 'errors'.DS : VIEWS_PATH;
 
         //if view passed as dir1.dir2.v.php then it will be exploded and converted to views/dir1/
         if (str_contains($view, '.')) {
             $views = explode('.', $view);
             foreach ($views as $view_dir) {
                 if (is_dir($path.$view_dir)) {
-                    $path .= $view_dir . DIRECTORY_SEPARATOR;
+                    $path .= $view_dir . DS;
                 }
             }
             //add last part ..../v.php

@@ -14,34 +14,28 @@ class AdminController
             header('Location:/admin/users');
         }
 
-        header('Location:/login');
+        return View('errors.403');
 
     }
-
+    //TODO  PRODUCTS functions===============================================
     //add product GET returns form // POST checks and save product
     //delete product GET id
-    //get products
+    //get all products
     //get product
     //edit product GET / POST
 
+    //TODO  ORDERS functions===============================================
     //add order for user {returns all products and users}
     //delete order GET id
     //get pending orders GET
     //get all orders GET
     //edit product GET / POST
 
-    //add user GET returns form with data // POST checks and save
-    //delete order GET id
-    //get pending orders
-    //get all orders
-    //edit product GET / POST
-
+    //TODO  USER functions===============================================
     //add user Get returns form // POST checks and save
     //delete user GET
     //get all users
     //edit user GET returns user form // POST checks and save
-
-    //user functions
     public function getAddUser()
     {
 
@@ -98,6 +92,7 @@ class AdminController
 
     }
 
+    //
     public function deleteProduct()
     {
     }

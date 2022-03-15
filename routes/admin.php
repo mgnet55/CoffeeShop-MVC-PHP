@@ -23,7 +23,7 @@ use PhpMvc\Http\Route;
 //Route::GET('users/add',[UserController::class,'new']);
 //Route::POST('users/add',[UserController::class,'get']);
 
-Route::GET('admin',[AdminController::class,'index']);
+Route::GET('admin',[AdminController::class,'allUsers']);
 
 Route::GET('admin/users',[AdminController::class,'allUsers']);
 
