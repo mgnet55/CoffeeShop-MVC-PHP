@@ -1,7 +1,6 @@
 <?php
 
 namespace PhpMvc\Http;
-
 use PhpMvc\Support\Arr;
 
 class Request
