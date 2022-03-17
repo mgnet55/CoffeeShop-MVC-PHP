@@ -16,6 +16,7 @@ class RegisterController
         return view('auth.register', 'main');
     }
 
+
     public function store()
     {
         if(!isAdmin())

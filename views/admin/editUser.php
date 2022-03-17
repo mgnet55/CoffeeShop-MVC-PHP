@@ -1,8 +1,9 @@
+
 <section class="content-header">
     <div class="container-fluid">
         <div class="row mb-2">
             <div class="col-sm-6">
-                <h1>Create User</h1>
+                <h1>Edit User</h1>
             </div>
         </div>
     </div><!-- /.container-fluid -->
@@ -16,19 +17,19 @@
                     <div class="card-body">
                         <!-- /.card-header -->
                         <!-- form start -->
-                        <form id="quickForm" method="POST" action="/admin/users/add" enctype="multipart/form-data">
+                        <form id="quickForm" method="POST" action="/admin/users/edit" enctype="multipart/form-data">
                             <div class="card-body">
-
+                            <input type="number" hidden name="id" value="<?= $user->id ?>">
                                 <div class="form-group">
                                     <label for="name">Full Name</label>
                                     <input type="text" name="name" class="form-control" id="name" required
-                                           placeholder="Enter your name">
-                                </div>
+                                        value="<?= $user->name ?>"   placeholder="Enter your name">
+                                     </div>
 
                                 <div class="form-group">
                                     <label for="email">Email</label>
                                     <input type="email" name="email" class="form-control" id="email" required
-                                           placeholder="Enter email">
+                                           placeholder="Enter email" value="<?= $user->email ?>">
                                 </div>
 
                                 <div class="form-group">
@@ -46,19 +47,17 @@
                                 <div class="form-group">
                                     <label for="room">Room number</label>
                                     <input type="number" name="room" class="form-control" required id="room"
-                                           placeholder="Enter room number">
+                                           placeholder="Enter room number" value="<?= $user->room ?>">
                                 </div>
 
                                 <div class="form-group">
                                     <label for="ext">Ext</label>
                                     <input type="text" name="ext" class="form-control" required id="ext"
-                                           placeholder="Enter ext">
+                                           placeholder="Enter ext" value="<?= $user->ext ?>">
                                 </div>
 
                                 <div class="form-group">
-                                    <label for="inputFile">Profile Picture</label>
-                                    <input type="file" accept="image/png, image/gif, image/jpeg" id="avatar"
-                                           name="avatar" required>
+                                    <img src="/uploads/<?= $user->avatar ?>" alt="#">
                                 </div>
                             </div>
 

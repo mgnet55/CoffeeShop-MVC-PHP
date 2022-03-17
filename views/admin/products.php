@@ -35,8 +35,8 @@
                                     <td><?= $product->prd_name ?></td>
                                     <td><?= $product->price ?></td>
                                     <td><?= $product->available ? 'Yes':'No'?></td>
-                                    <td><a href='/admin/product/edit?id=<?= $product->id ?>' class='btn btn-info'>Edit</a></td>
-                                    <td><a href='/admin/product/delete?id=<?= $product->id ?>' class='btn btn-info'>Edit</a></td>
+                                    <td><a href='/admin/products/edit?id=<?= $product->id ?>' class='btn btn-info'>Edit</a></td>
+                                    <td><a href='/admin/products/delete?id=<?= $product->id ?>' class='btn btn-danger'>Delete</a></td>
                                 </tr>
                             <?php } ?>
                             </tbody>

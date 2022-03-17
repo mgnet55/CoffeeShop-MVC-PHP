@@ -8,7 +8,6 @@
         </div>
     </div><!-- /.container-fluid -->
 </section>
-
 <!-- Main content -->
 <section class="content">
     <div class="container-fluid">
@@ -20,36 +19,42 @@
                         <table id="example1" class="table table-bordered table-striped">
                             <thead>
                             <tr>
-                                <th>Avatar</th>
-                                <th>Name</th>
-                                <th>Email</th>
+                                <th>#</th>
+                                <th>Customer</th>
+                                <th>Amount</th>
+                                <th>Order issued</th>
+                                <th>Status</th>
                                 <th>Room</th>
                                 <th>Ext</th>
-                                <th>Edit</th>
+                                <th>Details</th>
                                 <th>Delete</th>
                             </tr>
                             </thead>
                             <tbody>
-                            <?php foreach ($users as $user) { ?>
+                            <?php foreach ($orders as $order) { ?>
                                 <tr>
-                                    <td><img width="50px" src="<?= $user->avatar ?>"></td>
-                                    <td><?= $user->name ?></td>
-                                    <td><?= $user->email ?></td>
-                                    <td><?= $user->room ?></td>
-                                    <td><?= $user->ext ?></td>
-                                    <td><a href='/admin/users/edit?id=<?= $user->id ?>' class='btn btn-primary'>Edit</a></td>
-                                    <td><a href='/admin/users/delete?id=<?= $user->id ?>' class='btn btn-danger'>Delete</a></td>
+                                    <td><?= $order['id'] ?></td>
+                                    <td><?= $order['name'] ?></td>
+                                    <td><?= $order['total_amount'] ?></td>
+                                    <td><?= $order['order_date'] ?></td>
+                                    <td><a class='btn btn-primary' href='/admin/orders/done?id=<?=$order['id']?>'>Set done</a></td>
+                                    <td><?= $order['room'] ?></td>
+                                    <td><?= $order['ext'] ?></td>
+                                    <td><a href='/admin/orders?id=<?= $order['id'] ?>' class='btn btn-info'>Details</a></td>
+                                    <td><a href='/admin/orders/delete?id=<?= $order['id'] ?>' class='btn btn-danger'>Delete</a></td>
                                 </tr>
                             <?php } ?>
                             </tbody>
                             <tfoot>
                             <tr>
-                                <th>Avatar</th>
-                                <th>Name</th>
-                                <th>Email</th>
+                                <th>#</th>
+                                <th>Customer</th>
+                                <th>Amount</th>
+                                <th>Order issued</th>
+                                <th>Status</th>
                                 <th>Room</th>
                                 <th>Ext</th>
-                                <th>Edit</th>
+                                <th>Details</th>
                                 <th>Delete</th>
                             </tr>
                             </tfoot>

@@ -4,6 +4,6 @@ namespace App\Models;
 
 class Order extends BaseModel
 {
-    public static string $tableName = 'products';
+    public static string $tableName = 'orders';
 
 }
