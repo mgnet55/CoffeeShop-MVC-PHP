@@ -306,11 +306,9 @@ class AdminController
             ]
 
         );
-
         //handle file upload and if wrong don't save , else upload and save it to uploads folder
         //file upload to be implemented in helper functions
         $dbImageName = '';
-
         if (!empty($_FILES['image']['tmp_name'])) {
             $file = $_FILES['image']['tmp_name'];
             $fileType = mime_content_type($file);
@@ -371,12 +369,13 @@ class AdminController
     public function getManualOrder()
     {
         $users = app()->db->raw('SELECT id,name FROM users');
-        $products = app()->db->raw('SELECT id,name FROM products');
+        $products = app()->db->raw('SELECT id,prd_name,image,price FROM products');
         return view('admin.manual_orders', 'admin', ['users' => $users, 'products' => $products]);
     }
 
     public function postManualOrder()
     {
+
     }
 
     public function userOrders()
@@ -395,8 +394,9 @@ class AdminController
             return "Not Authorized";
         }
         $orderId = request('id');
+        $product = app()->db->raw('SELECT prd_name,quantity,image FROM products,order_products WHERE products.id = order_products.product_id AND order_products.order_id=?',[$orderId]);
         header('Content-Type: application/json');
-        echo json_encode(OrderProducts::where('1', ['user_id=', $orderId]));
+        echo json_encode($product);
     }
 
     public function deleteOrder()
@@ -426,5 +426,12 @@ class AdminController
         return Category::all(1);
     }
 
+    public function user_orders()
+    {
+        $id = request('id');
+        if (!$id) {return view('errors.404');}
+        $orders = Order::where(1, ['user_id=', $id]);
+        return view('admin.user_orders','admin',['orders'=>$orders]);
 
+    }
 }

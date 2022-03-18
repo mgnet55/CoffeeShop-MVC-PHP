@@ -22,14 +22,13 @@ Route::GET('admin/products/delete',[AdminController::class,'deleteProduct']);
 
 //orders management
 Route::GET('admin/orders',[AdminController::class,'allOrders']);
-Route::GET('admin/orders/add',[AdminController::class,'manualOrders']);
 Route::GET('admin/orders/processing',[AdminController::class,'processingOrders']);
 Route::GET('admin/orders/delete',[AdminController::class,'deleteOrder']);
 Route::GET('admin/orders/done',[AdminController::class,'setOrderDone']);
+Route::GET('admin/orders/add',[AdminController::class,'getManualOrder']);
 
+Route::GET('admin/users/checks',[AdminController::class,'user_orders']);
 
-//Route::GET('admin/users',static function(){return view('admin.users','admin');});
-
-
+Route::GET('admin/orderdetails',[AdminController::class,'orderProducts']);
 //orders management
-Route::GET('admin/orders/add',[AdminController::class,'manualOrders']);
+//Route::GET('admin/orders/add',[AdminController::class,'manualOrders']);

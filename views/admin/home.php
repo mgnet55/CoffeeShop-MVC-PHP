@@ -27,7 +27,7 @@
                 <p>Total Orders</p>
             </div>
             <div class="icon">
-                <i class="ion ion-bag"></i>
+                <i class="fas fa-shopping-cart"></i>
             </div>
             <a href="/admin/orders" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
         </div>
@@ -41,23 +41,25 @@
                 <p>Total Paid</p>
             </div>
             <div class="icon">
-                <i class="ion ion-stats-bars"></i>
+                <i class="fa-solid fa-sack-dollar"></i>
             </div>
             <a href="/admin/orders" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
         </div>
     </div>
 
     <div class="col-lg-3 col-6">
-
+        <!-- small card -->
         <div class="small-box bg-warning">
             <div class="inner">
                 <h3><?=$usersCount?></h3>
                 <p>User Registrations</p>
             </div>
             <div class="icon">
-                <i class="ion ion-person-add"></i>
+                <i class="fas fa-user-plus"></i>
             </div>
-            <a href="admin/users" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+            <a href="#" class="small-box-footer">
+                More info <i class="fas fa-arrow-circle-right"></i>
+            </a>
         </div>
     </div>
 

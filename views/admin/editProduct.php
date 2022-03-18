@@ -2,7 +2,7 @@
     <div class="container-fluid">
         <div class="row mb-2">
             <div class="col-sm-6">
-                <h1>Edir Product</h1>
+                <h1>Edit Product</h1>
             </div>
         </div>
     </div><!-- /.container-fluid -->
@@ -41,6 +41,11 @@
                                 </div>
                                 <div class="form-group">
                                     <img src="/uploads/<?= $product->image ?>" alt="#">
+                                </div>
+                                <div class="form-group">
+                                    <label for="inputFile">Product Image</label>
+                                    <input type="file" accept="image/png, image/gif, image/jpeg" id="avatar"
+                                           name="image" required>
                                 </div>
                             </div>
                             <!-- /.card-body -->

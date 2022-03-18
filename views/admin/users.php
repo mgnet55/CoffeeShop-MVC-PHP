@@ -25,6 +25,7 @@
                                 <th>Email</th>
                                 <th>Room</th>
                                 <th>Ext</th>
+								<th>Orders</th>
                                 <th>Edit</th>
                                 <th>Delete</th>
                             </tr>
@@ -37,6 +38,7 @@
                                     <td><?= $user->email ?></td>
                                     <td><?= $user->room ?></td>
                                     <td><?= $user->ext ?></td>
+                                    <td><a href='/admin/users/checks?id=<?= $user->id ?>' class='btn btn-warning'>Orders</a></td>
                                     <td><a href='/admin/users/edit?id=<?= $user->id ?>' class='btn btn-primary'>Edit</a></td>
                                     <td><a href='/admin/users/delete?id=<?= $user->id ?>' class='btn btn-danger'>Delete</a></td>
                                 </tr>

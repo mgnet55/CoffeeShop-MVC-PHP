@@ -3,11 +3,12 @@
     <div class="container-fluid">
         <div class="row mb-2">
             <div class="col-sm-6">
-                <h1>Orders</h1>
+                <h1>Users</h1>
             </div>
         </div>
     </div><!-- /.container-fluid -->
 </section>
+
 <!-- Main content -->
 <section class="content">
     <div class="container-fluid">
@@ -16,32 +17,28 @@
                 <div class="card">
                     <!-- /.card-header -->
                     <div class="card-body">
-                        <table id="example1" class="table table-bordered table-striped text-center">
+                        <table id="example1" class="table table-bordered table-striped">
                             <thead>
                             <tr>
-                                <th>#</th>
-                                <th>Customer</th>
-                                <th>Amount</th>
-                                <th>Order issued</th>
-                                <th>Status</th>
-                                <th>Details</th>
+                                <th>Avatar</th>
+                                <th>Name</th>
+                                <th>Email</th>
+                                <th>Room</th>
+                                <th>Ext</th>
+                                <th>Edit</th>
                                 <th>Delete</th>
-
                             </tr>
                             </thead>
                             <tbody>
-                            <?php foreach ($orders as $order) { $processing=$order['order_status'];
-                                if ($processing !== "done") {$processing="<a class='badge bg-primary' href='/admin/orders/done?id=".$order['id']."'>Set done</a>";}
-                                else{$processing='<span class="badge bg-success">Delivered</span>';}
-                                ?>
+                            <?php foreach ($users as $user) { ?>
                                 <tr>
-                                    <td><?= $order['id'] ?></td>
-                                    <td><?= $order['name'] ?></td>
-                                    <td><?= $order['total_amount'] ?></td>
-                                    <td><?= $order['order_date'] ?></td>
-                                    <td><?=$processing?></td>
-                                    <td><a href='/admin/orders?id=<?= $order['id'] ?>' class='btn btn-info'>Details</a></td>
-                                    <td><a href='/admin/orders/delete?id=<?= $order['id'] ?>' class='btn btn-danger'>Delete</a></td>
+                                    <td><img width="50px" src="<?= $user->avatar ?>"></td>
+                                    <td><?= $user->name ?></td>
+                                    <td><?= $user->email ?></td>
+                                    <td><?= $user->room ?></td>
+                                    <td><?= $user->ext ?></td>
+                                    <td><a href='/admin/users/edit?id=<?= $user->id ?>' class='btn btn-primary'>Edit</a></td>
+                                    <td><a href='/admin/users/delete?id=<?= $user->id ?>' class='btn btn-danger'>Delete</a></td>
                                 </tr>
                             <?php } ?>
                             </tbody>
