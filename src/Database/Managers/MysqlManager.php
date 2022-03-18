@@ -70,7 +70,8 @@ class MysqlManager implements DatabaseManager
         for ($i = 1, $i <= $iMax = count($values); $i <= $iMax; $i++) {
             $stmt->bindValue($i, $values[$i - 1]);
         }
-        return $stmt->execute();
+        $stmt->execute();
+        dd(self::$instance->lastInsertId());
     }
 
 }

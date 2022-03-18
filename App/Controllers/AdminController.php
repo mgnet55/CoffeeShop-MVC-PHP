@@ -277,12 +277,10 @@ class AdminController
 
     public function allProducts()
     {
-        if (isAdmin()) {
-            $page = request()->get('page') ?? 1;
-            $products = Product::all($page);
-            return view('admin.products', 'admin', ['products' => $products]);
-        }
-        return view('errors.403');
+        $page = (int)request()->get('page');
+        if (!$page) {$page = 1;}
+        $products = Product::all($page);
+        return view('admin.products', 'admin', ['products' => $products]);
     }
 
     public function postEditProduct()
@@ -394,7 +392,7 @@ class AdminController
             return "Not Authorized";
         }
         $orderId = request('id');
-        $product = app()->db->raw('SELECT prd_name,quantity,image FROM products,order_products WHERE products.id = order_products.product_id AND order_products.order_id=?',[$orderId]);
+        $product = app()->db->raw('SELECT prd_name,quantity,image FROM products,order_products WHERE products.id = order_products.product_id AND order_products.order_id=?', [$orderId]);
         header('Content-Type: application/json');
         echo json_encode($product);
     }
@@ -415,7 +413,7 @@ class AdminController
         if (!$orderId) {
             return view('errors.404');
         }
-        Order::update($orderId,['order_status'=>'done']);
+        Order::update($orderId, ['order_status' => 'done']);
         header('location:/admin/orders/processing');
 
     }
@@ -429,9 +427,11 @@ class AdminController
     public function user_orders()
     {
         $id = request('id');
-        if (!$id) {return view('errors.404');}
+        if (!$id) {
+            return view('errors.404');
+        }
         $orders = Order::where(1, ['user_id=', $id]);
-        return view('admin.user_orders','admin',['orders'=>$orders]);
+        return view('admin.user_orders', 'admin', ['orders' => $orders]);
 
     }
 }
