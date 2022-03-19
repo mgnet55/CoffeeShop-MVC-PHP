@@ -25,7 +25,7 @@
                 <div class="row"">
                 <?php foreach($products as $product){ ?>
                     <div class="card col-1 m-1">
-                        <img class="card-img-top" src="<?=$product['image'] ?>" alt="Card image cap">
+                        <img class="card-img-top" src="/uploads/<?=$product['image'] ?>" alt="Card image cap">
                         <div class="card-body">
                             <h5 class="card-title"><?=$product['prd_name'] ?></h5>
                             <h5 class="card-title"><?=$product['price'] ?></h5>

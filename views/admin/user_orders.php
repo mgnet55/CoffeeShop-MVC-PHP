@@ -52,7 +52,7 @@
                 let html=''
                 data.forEach(product => {
                 html+=`<div class="card col-2 m-1">
-                    <img class="card-img-top" src="${product['image']}" alt="Card image cap">
+                    <img class="card-img-top" src="/uploads/${product['image']}" alt="Card image cap">
                     <div class="card-body">
                         <h5 class="card-title">${product['prd_name']}</h5>
                     </div>

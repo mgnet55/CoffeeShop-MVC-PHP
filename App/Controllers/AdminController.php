@@ -21,7 +21,6 @@ class AdminController
 
     public function index()
     {
-
         $ordersCount = app()->db->raw('SELECT count(*) FROM orders')[0]['count(*)'];
         $usersCount = app()->db->raw('SELECT count(*) FROM users')[0]['count(*)'];
         $ordersTotal = app()->db->raw('SELECT sum(total_amount) FROM orders')[0]['sum(total_amount)'];

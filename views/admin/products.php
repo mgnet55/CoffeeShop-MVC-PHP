@@ -1,4 +1,5 @@
 <!-- Content Header (Page header) -->
+<div class="container">
 <section class="content-header">
     <div class="container-fluid">
         <div class="row mb-2">
@@ -31,7 +32,7 @@
                             <tbody>
                             <?php foreach ($products as $product) { ?>
                                 <tr>
-                                    <td><img width="50px" src="<?= $product->image ?>"></td>
+                                    <td><img width="50px" src="/uploads/<?= $product->image ?>"></td>
                                     <td><?= $product->prd_name ?></td>
                                     <td><?= $product->price ?></td>
                                     <td><?= $product->available ? 'Yes':'No'?></td>
@@ -63,3 +64,4 @@
     <!-- /.container-fluid -->
 </section>
 <!-- /.content -->
+</div>

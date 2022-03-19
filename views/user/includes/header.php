@@ -9,10 +9,19 @@
     <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico">
 
     <!-- CSS here -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.1.3/css/bootstrap.min.css" integrity="sha512-GQGU0fMMi238uA+a/bdWJfpUGKUkBdgfFdgBm72SUQ6BeyWjoY/ton0tEjH+OSH9iP4Dfh+7HM0I9f5eR0L/4w==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-    <link rel="stylesheet" href="/css/home.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.0/css/all.min.css" integrity="sha512-10/jx2EXwxxWqCLX/hHth/vu2KY3jCF70dCQB8TSgNjbCVAC/8vai53GfMDrO2Emgwccf2pJqxct9ehpzG+MTw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-
+    <link rel="stylesheet" href="/css/home/bootstrap.min.css">
+    <link rel="stylesheet" href="/css/home/owl.carousel.min.css">
+    <link rel="stylesheet" href="/css/home/slicknav.css">
+    <link rel="stylesheet" href="/css/home/flaticon.css">
+    <link rel="stylesheet" href="/css/home/progressbar_barfiller.css">
+    <link rel="stylesheet" href="/css/home/gijgo.css">
+    <link rel="stylesheet" href="/css/home/animate.min.css">
+    <link rel="stylesheet" href="/css/home/animated-headline.css">
+    <link rel="stylesheet" href="/css/home/magnific-popup.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.0/css/all.min.css" integrity="sha512-10/jx2EXwxxWqCLX/hHth/vu2KY3jCF70dCQB8TSgNjbCVAC/8vai53GfMDrO2Emgwccf2pJqxct9ehpzG+MTw==" crossorigin="anonymous" referrerpolicy="no-referrer" />    <link rel="stylesheet" href="/css/home/themify-icons.css">
+    <link rel="stylesheet" href="/css/home/slick.css">
+    <link rel="stylesheet" href="/css/home/nice-select.css">
+    <link rel="stylesheet" href="/css/home/style.css">
 
 </head>
 <body>
@@ -55,4 +64,4 @@
     <!-- Header End -->
 </header>
 <!-- header end -->
-<main class="container">
+<main class="container-fluid">
