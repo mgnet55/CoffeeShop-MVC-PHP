@@ -4,19 +4,17 @@ namespace App\Controllers;
 
 use App\Models\Category;
 use App\Models\Order;
-use App\Models\OrderProducts;
 use App\Models\Product;
 use App\Models\User;
-
 use Exception;
-
 use PhpMvc\Validation\Validator;
 
 class AdminController
 {
     public function __construct()
     {
-        if (!isAdmin()) return View('errors.403');
+        if (!isAdmin()) {View('errors.403');exit; }
+
     }
 
     public function index()
@@ -184,7 +182,7 @@ class AdminController
             return view('errors.404');
         }
         User::delete($userId);
-        return view('admin.users', 'admin');
+        header('Location:/admin/users');
     }
 
     public function allUsers()

@@ -162,7 +162,7 @@ input{
 /* --------------- Login page------------ */
 
 .login-container{
-    background-image: url(../assets/pexels-chevanon-photography-302899.jpg);
+    background-image: url(/assets/login-bg.webp);
     background-position: center;
     background-size: cover;
     color: #fff;
@@ -170,9 +170,6 @@ input{
     margin: 0;
 }
 
-.login-container .container{
-    padding-top: 2rem;
-}
 .login-container .container .logo{
     padding-top: 2rem;
     font-size: 2.2em;

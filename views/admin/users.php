@@ -8,7 +8,6 @@
         </div>
     </div><!-- /.container-fluid -->
 </section>
-
 <!-- Main content -->
 <section class="content">
     <div class="container-fluid">
@@ -33,7 +32,7 @@
                             <tbody>
                             <?php foreach ($users as $user) { ?>
                                 <tr>
-                                    <td><img width="50px" src="<?= $user->avatar ?>"></td>
+                                    <td><img width="50px" src="/uploads/<?= $user->avatar ?>"></td>
                                     <td><?= $user->name ?></td>
                                     <td><?= $user->email ?></td>
                                     <td><?= $user->room ?></td>

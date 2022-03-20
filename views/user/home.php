@@ -1,35 +1,35 @@
-<div class="d-flex min-vh-100" lc-helper="background"
-     style="background: url(&quot;https://images.unsplash.com/34/ddTzoX58Q153kjaitXl4_ny.jpg?ixlib=rb-1.2.1&amp;q=80&amp;fm=jpg&amp;crop=entropy&amp;cs=tinysrgb&amp;w=1080&amp;h=768&amp;fit=crop&amp;ixid=eyJhcHBfaWQiOjM3ODR9&quot;) center center / cover no-repeat rgb(68, 68, 68); background-blend-mode: overlay; --darkreader-inline-bgcolor:#33373a;"
-     data-darkreader-inline-bgcolor="">
-    <div class="align-self-center text-center text-light col-md-8 offset-md-2">
-        <div class="lc-block mb-4">
-            <div editable="rich">
-                <h1 class="display-1 fw-bolder">With Love and Respect</h1>
+<div class="container-fluid">
+    <div class="new-arrival new-arrival2">
+        <div class="row">
+            <div class="col-xl-8">
+                <div class="row">
+
+                <?php foreach ($products as $product) { ?>
+
+                    <div class="col-lg-3 col-md-4 col-sm-4 col-6">
+                        <div class="single-new-arrival text-center">
+                            <div class="popular-img">
+                                <img src="/uploads/<?= $product->image ?>" alt="product">
+
+                                <div class="favorit-items"><img src="/uploads/favorit-card.png"
+                                                                onclick="addToCart(<?= $product->id ?>,'<?= $product->prd_name ?>',<?= $product->price ?>,'<?= $product->image ?>')">
+                                </div>
+                            </div>
+                            <div class="popular-caption">
+                                <h3><?= $product->prd_name ?></h3>
+                                <span>$ <?= $product->price ?></span>
+                            </div>
+                        </div>
+                    </div>
+                <?php } ?>
+                </div>
             </div>
-        </div>
-        <div class="lc-block">
-            <div editable="rich">
-                <p class="lead">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin faucibus porttitor
-                    dui.</p>
-
-                <p class="lead">Sim in vestibulum metus pulvinar sit amet.
-
-                </p>
+<!--  Cart start          -->
+            <div class="col-xl-4">
+                <?php include(VIEWS_PATH . 'user' . DS . 'cart.php') ?>
             </div>
-        </div>
-        <div class="lc-block">
-            <svg onclick="if (!document.querySelector('body').classList.contains('livecanvas-is-editing') ) this.closest('section').nextElementSibling.scrollIntoView({ behavior: 'smooth'  });"
-                 width="4em" height="4em" viewBox="0 0 16 16" class="text-light" fill="currentColor"
-                 xmlns="http://www.w3.org/2000/svg" lc-helper="svg-icon" data-darkreader-inline-fill=""
-                 style="--darkreader-inline-fill:currentColor;">
-                <path fill-rule="evenodd"
-                      d="M8 15A7 7 0 1 0 8 1a7 7 0 0 0 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"></path>
-                <path fill-rule="evenodd"
-                      d="M8 4a.5.5 0 0 1 .5.5v5.793l2.146-2.147a.5.5 0 0 1 .708.708l-3 3a.5.5 0 0 1-.708 0l-3-3a.5.5 0 1 1 .708-.708L7.5 10.293V4.5A.5.5 0 0 1 8 4z"></path>
-            </svg>
-
-            <!-- for Safari support only, remove if you want  -->
-            <script async="" src="https://unpkg.com/smoothscroll-polyfill/dist/smoothscroll.min.js"></script>
+<!--  end cart  -->
         </div>
     </div>
+
 </div>

@@ -1,25 +1,25 @@
-  </div>
-  <footer class="main-footer">
+</div>
+<footer class="main-footer">
     <div class="float-right d-none d-sm-block">
-      <b>Version</b> 1.0.0
+        <b>Version</b> 1.0.0
     </div>
     <strong>Copyright &copy; 2022 PHP TEAM [Mina-Rana-Ebtisam].</strong> All rights reserved.
-  </footer>
+</footer>
 
-  <!-- Control Sidebar -->
-  <aside class="control-sidebar control-sidebar-dark">
+<!-- Control Sidebar -->
+<aside class="control-sidebar control-sidebar-dark">
     <!-- Control sidebar content goes here -->
-  </aside>
-  <!-- /.control-sidebar -->
+</aside>
+<!-- /.control-sidebar -->
 </div>
 <!-- ./wrapper -->
 
 <!-- jQuery -->
-<script src="/plugins/jquery/jquery.min.js"></script>
 <!-- Bootstrap 4 -->
-<script src="/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
 <!-- DataTables  & Plugins -->
+<script src="/plugins/jquery/jquery.min.js"></script>
 <script src="/plugins/datatables/jquery.dataTables.min.js"></script>
+<script src="/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
 <script src="/plugins/datatables-bs4/js/dataTables.bootstrap4.min.js"></script>
 <script src="/plugins/datatables-responsive/js/dataTables.responsive.min.js"></script>
 <script src="/plugins/datatables-responsive/js/responsive.bootstrap4.min.js"></script>
@@ -32,24 +32,24 @@
 <script src="/plugins/datatables-buttons/js/buttons.print.min.js"></script>
 <script src="/plugins/datatables-buttons/js/buttons.colVis.min.js"></script>
 <!-- AdminLTE App -->
-<script src="/js/adminlte.min.js"></script>
+<script src="/js/admin/adminlte.min.js"></script>
 <!-- Page specific script -->
 <script>
-  $(function () {
-    $("#example1").DataTable({
-      "responsive": true, "lengthChange": false, "autoWidth": false,
-      "buttons": ["copy", "csv", "excel", "pdf", "print", "colvis"]
-    }).buttons().container().appendTo('#example1_wrapper .col-md-6:eq(0)');
-    $('#example2').DataTable({
-      "paging": true,
-      "lengthChange": false,
-      "searching": false,
-      "ordering": true,
-      "info": true,
-      "autoWidth": false,
-      "responsive": true,
+    $(function () {
+        $("#example1").DataTable({
+            "responsive": true, "lengthChange": false, "autoWidth": false,
+            "buttons": ["copy", "csv", "excel", "pdf", "print", "colvis"]
+        }).buttons().container().appendTo('#example1_wrapper .col-md-6:eq(0)');
+        $('#example2').DataTable({
+            "paging": true,
+            "lengthChange": false,
+            "searching": false,
+            "ordering": true,
+            "info": true,
+            "autoWidth": false,
+            "responsive": true,
+        });
     });
-  });
 </script>
 </body>
 </html>

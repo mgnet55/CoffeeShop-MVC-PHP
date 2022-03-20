@@ -71,7 +71,7 @@ class MysqlManager implements DatabaseManager
             $stmt->bindValue($i, $values[$i - 1]);
         }
         $stmt->execute();
-        dd(self::$instance->lastInsertId());
+        return (self::$instance->lastInsertId());
     }
 
 }

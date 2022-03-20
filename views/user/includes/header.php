@@ -1,5 +1,5 @@
 <!doctype html>
-<html class="no-js" lang="zxx">
+<html>
 <head>
     <meta charset="utf-8">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
@@ -25,7 +25,7 @@
 
 </head>
 <body>
-<header>
+<header class="mb-5">
     <!-- Header Start -->
     <div class="header-area">
         <div class="main-header header-sticky">
@@ -33,15 +33,14 @@
                     <div class="header-left d-flex align-items-center">
                         <!-- Logo -->
                         <div class="logo">
-                            <h2>Sweet Coffe</h2>
-                            <a href="index.html"><img src="assets/img/logo/logo.png" alt=""></a>
+                            <img width="80px" src="/logo.png" alt="logo"></a>
+                            <b>Sweet Coffe</b>
                         </div>
                         <!-- Main-menu -->
                         <div class="main-menu  d-none d-lg-block">
                             <nav>
                                 <ul id="navigation">
-                                    <li><a href="/home">Home</a></li>
-                                    <li><a href="/products">Shop</a></li>
+                                    <li><a href="/">Explore</a></li>
                                     <li><a href="/orders">My Orders</a></li>
                                 </ul>
                             </nav>
@@ -50,8 +49,9 @@
                     <!-- Social -->
                     <div class="header-right1 d-flex align-items-center">
                         <div class="header-social d-none d-md-block">
-                            <a href="#"><i class="fab fa-twitter"></i></a>
-                            <a href="https://bit.ly/sai4ull"><i class="fab fa-facebook-f"></i></a>
+                            Welcome, <?=$_SESSION['name']?>
+                            <img class="rounded-circle" width="50px" height="50px" src="/uploads/<?=$_SESSION['avatar']?>">
+                            <a href="/logout"><i class="fa fa-sign-out"></i></a>
                         </div>
                     </div>
                     <!-- Mobile Menu -->

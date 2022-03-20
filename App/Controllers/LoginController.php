@@ -30,7 +30,7 @@ class LoginController
         if (!$v->isValid()) {
             app()->session->setFlash('errors', $v->getErrors());
             app()->session->setFlash('old', request()->all());
-            header('location:./login');
+            header('location:/login');
             return;
         }
         $email = request('email');
@@ -52,13 +52,13 @@ class LoginController
             app()->session->set('type', $type);
             if($type === 'admin'){header('Location:/admin'); return; }
 
-            header('Location:/home');
-            return;
+            return header('Location:/');
+
 //            header('Location:/home');
 //            return;
         }
         app()->session->setFlash('old', request()->all());
-        header('location:./login');
+        header('location:/login');
     }
 
     public function logout(){

@@ -8,6 +8,7 @@ Route::GET('admin',[AdminController::class,'index']);
 ////users management
 Route::GET('admin/users',[AdminController::class,'allUsers']);
 Route::GET('admin/users/add',[AdminController::class,'getAddUser']);
+Route::GET('admin/users/delete',[AdminController::class,'deleteUser']);
 Route::POST('admin/users/add',[AdminController::class,'postAddUser']);
 Route::GET('admin/users/edit',[AdminController::class,'getEditUser']);
 Route::POST('admin/users/edit',[AdminController::class,'postEditUser']);
