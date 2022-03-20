@@ -40,7 +40,7 @@
                                     <td><?= $order['total_amount'] ?></td>
                                     <td><?= $order['order_date'] ?></td>
                                     <td><?=$processing?></td>
-                                    <td><a href='/admin/orders?id=<?= $order['id'] ?>' class='btn btn-info'>Details</a></td>
+                                    <td><a href='/admin/orders/details?id=<?= $order['id'] ?>' class='btn btn-info'>Details</a></td>
                                     <td><a href='/admin/orders/delete?id=<?= $order['id'] ?>' class='btn btn-danger'>Delete</a></td>
                                 </tr>
                             <?php } ?>

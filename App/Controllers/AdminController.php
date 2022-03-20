@@ -383,15 +383,25 @@ class AdminController
         echo json_encode(Order::where('1', ['user_id=', $userId]));
     }
 
-    public function orderProducts()
+    public function order_details()
+    {
+        return view('admin.order_details','admin',['products'=>$this->orderProducts(false)]);
+    }
+
+    public function orderProducts($json = true)
     {
         if (!$_SESSION['type']) {
             return "Not Authorized";
         }
         $orderId = request('id');
-        $product = app()->db->raw('SELECT prd_name,quantity,image FROM products,order_products WHERE products.id = order_products.product_id AND order_products.order_id=?', [$orderId]);
-        header('Content-Type: application/json');
-        echo json_encode($product);
+        $products = app()->db->raw('SELECT prd_name,quantity,image FROM products,order_products WHERE products.id = order_products.product_id AND order_products.order_id=?', [$orderId]);
+        if($json == true){
+            header('Content-Type: application/json');
+            echo json_encode($products);
+        }else{
+            return $products;
+        }
+
     }
 
     public function deleteOrder()

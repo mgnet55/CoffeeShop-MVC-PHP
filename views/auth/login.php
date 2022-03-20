@@ -41,7 +41,7 @@
                 <div class="forget">
                     <a href="">Forget Password!</a>
                 </div>
-                <button type="submit" class="submit" name="login">Submit</button>
+                <button type="submit" class="submit" name="login">Login</button>
         </form>
     </div>
 </div>

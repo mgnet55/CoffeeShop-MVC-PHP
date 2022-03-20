@@ -34,7 +34,7 @@
                         <!-- Logo -->
                         <div class="logo">
                             <img width="80px" src="/logo.png" alt="logo"></a>
-                            <b>Sweet Coffe</b>
+                            <b><?=env('APP_NAME')?></b>
                         </div>
                         <!-- Main-menu -->
                         <div class="main-menu  d-none d-lg-block">

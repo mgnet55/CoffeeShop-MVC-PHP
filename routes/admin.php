@@ -22,6 +22,7 @@ Route::POST('admin/products/edit',[AdminController::class,'postEditProduct']);
 Route::GET('admin/products/delete',[AdminController::class,'deleteProduct']);
 
 //orders management
+Route::GET('admin/orders/details',[AdminController::class,'order_details']);
 Route::GET('admin/orders',[AdminController::class,'allOrders']);
 Route::GET('admin/orders/processing',[AdminController::class,'processingOrders']);
 Route::GET('admin/orders/delete',[AdminController::class,'deleteOrder']);

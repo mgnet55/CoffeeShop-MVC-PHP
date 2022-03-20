@@ -14,7 +14,7 @@
                 <th>Name</th>
                 <th class="text-center">Quantity</th>
                 <th class="text-center">Subtotal</th>
-                <th class="text-center">Remove</a></th>
+                <th class="text-center"></th>
             </tr>
             </thead>
             <tbody id="cartSection">

@@ -47,9 +47,9 @@ class Route
         if (is_array($action)) {
             call_user_func_array([new $action[0], $action[1]], []);
         }
-        /*if (is_string($action)) {
-            $action = explode('@', $action);
-            call_user_func_array([new $action[0], $action[1]], []);
-        }*/
+//        if (is_string($action)) {
+//            $action = explode('@', $action);
+//            call_user_func_array([new $action[0], $action[1]], []);
+//        }
     }
 }
