@@ -11,13 +11,17 @@ use PhpMvc\Validation\Validator;
 
 class AdminController
 {
-    public function __construct()
-    {
-        if (!isAdmin()) {View('errors.403');exit; }
 
+    public function __call($method, array $args)
+    {
+        if(method_exists($this, $method)) {
+            if (isAdmin()) {return call_user_func_array([$this,$method], $args);}
+            else {return view('errors.403');}
+        }
+        return view('errors.404');
     }
 
-    public function index()
+    protected function index()
     {
         $ordersCount = app()->db->raw('SELECT count(*) FROM orders')[0]['count(*)'];
         $usersCount = app()->db->raw('SELECT count(*) FROM users')[0]['count(*)'];
@@ -28,7 +32,7 @@ class AdminController
     }
 
     //TODO  USER functions===============================================
-    public function postEditUser()
+    protected function postEditUser()
     {
         $uid = (int)request('id');
 
@@ -92,18 +96,17 @@ class AdminController
             unset($userData['avatar']);
         }
 
-
         User::update($uid, $userData);
         //app()->session->setFlash('success', 'Registered Successfully');
         header('Location: /admin/users');
     }
 
-    public function getAddUser()
+    protected function getAddUser()
     {
         return view('admin.addUser', 'admin');
     }
 
-    public function postAddUser()
+    protected function postAddUser()
     {
         $v = new Validator;
         $v->setRules([
@@ -162,7 +165,7 @@ class AdminController
         header('Location: /admin/users');
     }
 
-    public function getEditUser()
+    protected function getEditUser()
     {
         $userId = (int)request()->get('id');
         if (!$userId) {
@@ -175,7 +178,7 @@ class AdminController
         return view('admin.editUser', 'admin', ['user' => $user[0]]);
     }
 
-    public function deleteUser()
+    protected function deleteUser()
     {
         $userId = (int)request()->get('id');
         if (!$userId) {
@@ -185,30 +188,24 @@ class AdminController
         header('Location:/admin/users');
     }
 
-    public function allUsers()
+    protected function allUsers()
     {
-        if (isAdmin()) {
-            $page = request()->get('page') ?? 1;
-            $users = User::all($page);
-            return view('admin.users', 'admin', ['users' => $users, 'page' => $page]);
-        }
-        return view('errors.403');
+        $page = request()->get('page') ?? 1;
+        $users = User::all($page);
+        return view('admin.users', 'admin', ['users' => $users, 'page' => $page]);
     }
 
     //TODO  PRODUCTS functions===============================================
 
-    public function addGetProduct()
+    protected function addGetProduct()
     {
         $categories = $this->allCategories();
         return view('admin.addProduct', 'admin', ['categories' => $categories]);
 
     }
 
-    public function postAddProduct()
+    protected function postAddProduct()
     {
-        if (!isAdmin()) {
-            return view('erros.403');
-        }
         $v = new Validator;
         $v->setRules([
                 'prd_name' => 'required',
@@ -249,7 +246,7 @@ class AdminController
         header('Location: /admin/products');
     }
 
-    public function getEditProduct()
+    protected function getEditProduct()
     {
         $productId = (int)request()->get('id');
         if (!$productId) {
@@ -262,7 +259,7 @@ class AdminController
         return view('admin.editProduct', 'admin', ['product' => $product[0]]);
     }
 
-    public function deleteProduct()
+    protected function deleteProduct()
     {
         $productId = (int)request()->get('id');
         if (!$productId) {
@@ -272,26 +269,23 @@ class AdminController
         header('location:/admin/products');
     }
 
-    public function allProducts()
+    protected function allProducts()
     {
         $page = (int)request()->get('page');
-        if (!$page) {$page = 1;}
+        if (!$page) {
+            $page = 1;
+        }
         $products = Product::all($page);
         return view('admin.products', 'admin', ['products' => $products]);
     }
 
-    public function postEditProduct()
+    protected function postEditProduct()
     {
-
-        if (!isAdmin()) {
-            return view('erros.403');
-        }
         $pid = (int)request('id');
 
         if (!$pid || !Product::where(1, ['id=', $pid])) {
             return view('erros.404');
         }
-
 
         $v = new Validator;
         $v->setRules([
@@ -341,70 +335,64 @@ class AdminController
 
     //TODO  ORDERS functions===============================================
     //add order for user {returns all products and users}
-    public function allOrders()
+    protected function allOrders()
     {
-        if (isAdmin()) {
-            //$page = request()->get('page') ?? 1; //used to paginate query to improve performance as usual
-            $orders = app()->db->raw('SELECT orders.id,order_date,order_status,total_amount,name FROM orders,users WHERE orders.user_id = users.id ORDER BY order_date DESC');
-            return view('admin.orders', 'admin', ['orders' => $orders]);
-        }
-        return view('errors.403');
+        //$page = request()->get('page') ?? 1; //used to paginate query to improve performance as usual
+        $orders = app()->db->raw('SELECT orders.id,order_date,order_status,total_amount,name FROM orders,users WHERE orders.user_id = users.id ORDER BY order_date DESC');
+        return view('admin.orders', 'admin', ['orders' => $orders]);
     }
 
-    public function processingOrders()
+    protected function processingOrders()
     {
-        if (isAdmin()) {
-            $page = request()->get('page') ?? 1; //used to paginate query to improve performance as usual
-            $orders = app()->db->raw("SELECT orders.id,order_date,total_amount,name,ext,room FROM orders,users WHERE orders.user_id = users.id AND orders.order_status='processing'");
-            return view('admin.processingOrders', 'admin', ['orders' => $orders]);
-        }
-        return view('errors.403');
+        $page = request()->get('page') ?? 1; //used to paginate query to improve performance as usual
+        $orders = app()->db->raw("SELECT orders.id,order_date,total_amount,name,ext,room FROM orders,users WHERE orders.user_id = users.id AND orders.order_status='processing'");
+        return view('admin.processingOrders', 'admin', ['orders' => $orders]);
     }
 
-    public function getManualOrder()
+    protected function getManualOrder()
     {
         $users = app()->db->raw('SELECT id,name FROM users');
         $products = app()->db->raw('SELECT id,prd_name,image,price FROM products');
         return view('admin.manual_orders', 'admin', ['users' => $users, 'products' => $products]);
     }
 
-    public function postManualOrder()
+    protected function postManualOrder()
     {
 
     }
 
-    public function userOrders()
+    protected function userOrders()
     {
+        header('Content-Type: application/json');
         if (!$_SESSION['type']) {
             return "Not Authorized";
         }
         $userId = request('id');
-        header('Content-Type: application/json');
         echo json_encode(Order::where('1', ['user_id=', $userId]));
     }
 
-    public function order_details()
+    protected function order_details()
     {
-        return view('admin.order_details','admin',['products'=>$this->orderProducts(false)]);
+        return view('admin.order_details', 'admin', ['products' => $this->orderProducts(false)]);
     }
 
-    public function orderProducts($json = true)
+    protected function orderProducts($json = true)
     {
         if (!$_SESSION['type']) {
             return "Not Authorized";
         }
         $orderId = request('id');
         $products = app()->db->raw('SELECT prd_name,quantity,image FROM products,order_products WHERE products.id = order_products.product_id AND order_products.order_id=?', [$orderId]);
-        if($json == true){
+        if ($json == true) {
             header('Content-Type: application/json');
             echo json_encode($products);
-        }else{
+        } else {
             return $products;
         }
 
     }
 
-    public function deleteOrder()
+    protected function deleteOrder()
     {
         $orderId = (int)request()->get('id');
         if (!$orderId) {
@@ -414,7 +402,7 @@ class AdminController
         header('location:/admin/orders');
     }
 
-    public function setOrderDone()
+    protected function setOrderDone()
     {
         $orderId = (int)request()->get('id');
         if (!$orderId) {
@@ -425,13 +413,13 @@ class AdminController
 
     }
 
-    public function allCategories()
+    protected function allCategories()
     {
         //header('Content-Type: application/json');
         return Category::all(1);
     }
 
-    public function user_orders()
+    protected function user_orders()
     {
         $id = request('id');
         if (!$id) {

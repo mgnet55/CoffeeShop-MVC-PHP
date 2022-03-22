@@ -50,7 +50,7 @@ class LoginController
                 app()->session->set($property, $value);
             }
             app()->session->set('type', $type);
-            if($type === 'admin'){header('Location:/admin'); return; }
+            if($type === 'admin'){return header('Location:/admin');}
 
             return header('Location:/');
 
@@ -63,6 +63,6 @@ class LoginController
 
     public function logout(){
         session_destroy();
-        return view('auth.login');
+        header('location:/login');
     }
 }

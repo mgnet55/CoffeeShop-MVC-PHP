@@ -1,27 +1,27 @@
-window.onload = updateCart();
+window.load = updateCart();
 
-function readLocalStorage() {
+function readSessionStorage() {
 
-    return localStorage.cartItems ? JSON.parse(localStorage.cartItems) : {};
+    return sessionStorage.cartItems ? JSON.parse(sessionStorage.cartItems) : {};
 }
 
 function addToCart(id, name, unitPrice, image) {
     console.log('invoked')
-    let items = readLocalStorage();
+    let items = readSessionStorage();
     if (items[id]) {
         items[id].quantity += 1;
         items[id]['total'] =  Math.round(items[id]['total']+ unitPrice)
     } else {
         items[id] = {name, unitPrice, quantity: 1, image, total: unitPrice};
     }
-    localStorage.cartItems = JSON.stringify(items);
+    sessionStorage.cartItems = JSON.stringify(items);
     updateCart();
 }
 
 function deleteFromCart(id) {
-    let items = readLocalStorage();
+    let items = readSessionStorage();
     delete items[id];
-    localStorage.cartItems = JSON.stringify(items);
+    sessionStorage.cartItems = JSON.stringify(items);
     updateCart()
 }
 
@@ -30,7 +30,7 @@ function updateCart() {
     let cartTotalPrice = 0
     let html = '';
     let container = document.getElementById('cartSection');
-    const items = readLocalStorage();
+    const items = readSessionStorage();
     for (const index in items) {
         cartTotalPrice += items[index]['total']
         html += `
@@ -51,13 +51,13 @@ function updateCart() {
 }
 
 function clearCart() {
-    localStorage.removeItem('cartItems');
+    sessionStorage.removeItem('cartItems');
     updateCart();
 }
 
 function sendOrder() {
     let order = {};
-    const items = readLocalStorage();
+    const items = readSessionStorage();
     for (const id in items) {
         order[id] = items[id].quantity;
     }

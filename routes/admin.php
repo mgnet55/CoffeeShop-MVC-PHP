@@ -30,7 +30,6 @@ Route::GET('admin/orders/done',[AdminController::class,'setOrderDone']);
 Route::GET('admin/orders/add',[AdminController::class,'getManualOrder']);
 
 Route::GET('admin/users/checks',[AdminController::class,'user_orders']);
-
 Route::GET('admin/orderdetails',[AdminController::class,'orderProducts']);
 //orders management
 //Route::GET('admin/orders/add',[AdminController::class,'manualOrders']);
