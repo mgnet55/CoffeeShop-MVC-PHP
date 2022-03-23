@@ -10,21 +10,21 @@
 <section class="content">
     <div class="container-fluid">
         <div class="row">
+
             <div class="col-12">
 
                 <?php
                 if (!$orders) {
                     echo "<h3>No Orders</h3>";
                 }
-                foreach ($orders as $order) { ?>
+                foreach (array_reverse($orders) as $order) { ?>
                     <div class="card card-primary shadow-none collapsed-card">
                         <div class="card-header">
-                            <h3 class="card-title"><?= $order->order_date ?></h3>
-                            <div class="card-tools">
-                                <button type="button" class="btn btn-tool" data-card-widget="collapse"
-                                        onClick="order_products(<?= $order->id ?>,orderId<?= $order->id ?>)"><i
-                                            class="fas fa-plus"></i></button>
-                            </div>
+                            <p class="card-title"><?= $order->order_date ?></p>
+                                <button type="button" class="btn" data-card-widget="collapse"
+                                        onClick="order_products(<?= $order->id ?>,orderId<?= $order->id ?>,this)">
+                                    <i class="fas fa-plus"></i>
+                                </button>
                         </div>
                         <div class="card-body" style="display: none;">
                             <h5>Total Amount <?= $order->total_amount ?> | Status <?= $order->order_status ?></h5>
@@ -42,24 +42,4 @@
     </div>
     <!-- /.container-fluid -->
 </section>
-
-<script>
-    function order_products(index, panel) {
-        console.log(index, panel);
-        fetch(`/orderdetails?id=${index}`)
-            .then(response => response.json())
-            .then((data) => {
-                let html=''
-                data.forEach(product => {
-                    html+=`<div class="card col-2 m-1">
-                    <img class="card-img-top" src="/uploads/${product['image']}" alt="Card image cap">
-                    <div class="card-body">
-                        <h5 class="card-title">${product['prd_name']}</h5>
-                    </div>
-                </div>
-                `
-                });
-                panel.innerHTML=html;
-            });
-    }
-</script>
+<script src="/js/order_details.js"></script>

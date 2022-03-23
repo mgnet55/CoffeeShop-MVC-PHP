@@ -80,11 +80,8 @@ class UserController
 
     public function orderDetails()
     {
-        if (!$_SESSION['id']) {
-            return "Not Authorized";
-        }
         $orderId = request('id');
-        $product = app()->db->raw('SELECT prd_name,quantity,image FROM products,order_products,orders WHERE orders.user_id = ? AND products.id = order_products.product_id AND order_products.order_id=?', [$_SESSION['id'], $orderId]);
+        $product = app()->db->raw('SELECT prd_name,quantity,image FROM products,order_products,orders WHERE orders.user_id = ? AND products.id = order_products.product_id AND order_products.order_id=? GROUP BY products.id', [$_SESSION['id'], $orderId]);
         header('Content-Type: application/json');
         echo json_encode($product);
     }

@@ -378,9 +378,6 @@ class AdminController
 
     protected function orderProducts($json = true)
     {
-        if (!$_SESSION['type']) {
-            return "Not Authorized";
-        }
         $orderId = request('id');
         $products = app()->db->raw('SELECT prd_name,quantity,image FROM products,order_products WHERE products.id = order_products.product_id AND order_products.order_id=?', [$orderId]);
         if ($json == true) {
@@ -389,7 +386,6 @@ class AdminController
         } else {
             return $products;
         }
-
     }
 
     protected function deleteOrder()
@@ -425,8 +421,9 @@ class AdminController
         if (!$id) {
             return view('errors.404');
         }
+        $user = User::where(1,['id=',(int)$id],['name']);
         $orders = Order::where(1, ['user_id=', $id]);
-        return view('admin.user_orders', 'admin', ['orders' => $orders]);
+        return view('admin.user_orders', 'admin', ['orders' => $orders,'user'=>$user[0]->name]);
 
     }
 }
