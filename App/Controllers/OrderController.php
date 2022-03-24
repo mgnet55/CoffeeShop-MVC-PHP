@@ -16,7 +16,7 @@ class OrderController
                 return header('location:/login');
             }
         }
-        return view('errors.404');
+        return view('errors.403');
     }
 
     protected function index()

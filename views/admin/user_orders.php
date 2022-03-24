@@ -48,7 +48,7 @@
 <script>
     function order_products(index, panel,button) {
         console.log(index, panel);
-        fetch(`/admin/orderdetails?id=${index}`)
+        fetch(`/orderdetails?id=${index}`)
             .then(response => response.json())
             .then((data) => {
                 let html=''
