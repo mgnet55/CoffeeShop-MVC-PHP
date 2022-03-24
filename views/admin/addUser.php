@@ -58,7 +58,7 @@
                                 <div class="form-group">
                                     <label for="inputFile">Profile Picture</label>
                                     <input type="file" accept="image/png, image/gif, image/jpeg" id="avatar"
-                                           name="avatar" required>
+                                           name="avatar">
                                 </div>
                             </div>
 

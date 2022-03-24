@@ -21,7 +21,7 @@
                     <div class="card card-primary shadow-none collapsed-card">
                         <div class="card-header">
                             <p class="card-title"><?= $order->order_date ?></p>
-                                <button type="button" class="btn" data-card-widget="collapse"
+                                <button type="button" class="btn btn-primary" data-card-widget="collapse"
                                         onClick="order_products(<?= $order->id ?>,orderId<?= $order->id ?>,this)">
                                     <i class="fas fa-plus"></i>
                                 </button>

@@ -1,23 +1,38 @@
 <?php
+
 namespace App\Controllers;
 
 use App\Models\Admin;
 use App\Models\User;
-use http\Env\Response;
 use PhpMvc\Validation\Validator;
-use function app;
-use function request;
-use function view;
 
-class LoginController
+class HomeController
 {
     public function index()
     {
-        return view('auth.login');
+        if (!isLogged()) {
+            return header('location:/login');
+        }
+
+        if (isAdmin()) {
+            $ordersCount = app()->db->raw('SELECT count(*) FROM orders')[0]['count(*)'];
+            $usersCount = app()->db->raw('SELECT count(*) FROM users')[0]['count(*)'];
+            $ordersTotal = app()->db->raw('SELECT sum(total_amount) FROM orders')[0]['sum(total_amount)'];
+            $ordersProcessing = app()->db->raw("SELECT count(*) FROM orders WHERE order_status = 'processing'")[0]['count(*)'];
+
+            return view('admin.home', 'admin', ['ordersCount' => $ordersCount, 'ordersTotal' => $ordersTotal, 'usersCount' => $usersCount, 'ordersProcessing' => $ordersProcessing]);
+
+        }
+        if (isUser()) {
+            (new ProductController)->available();
+        }
 
     }
 
-    public function login()
+    public function login(){
+        return view('auth.login');
+    }
+    public function auth()
     {
         $v = new Validator;
         $v->setRules([
@@ -34,19 +49,21 @@ class LoginController
             return;
         }
         $email = request('email');
-        $password =request('password');
+        $password = request('password');
         $type = 'user';
         $data = User::where(1, ['email=', $email]);
-        if(!$data){
+        if (!$data) {
 
             $data = Admin::where(1, ['email=', $email]);
             $type = 'admin';
         }
 
-        if ($data && password_verify($password,$data[0]->password)) {
+        if ($data && password_verify($password, $data[0]->password)) {
             //data is true and password is correct
             foreach ($data[0] as $property => $value) {
-                if ($property == 'password'){continue;}
+                if ($property == 'password') {
+                    continue;
+                }
                 app()->session->set($property, $value);
             }
             app()->session->set('type', $type);
@@ -58,7 +75,8 @@ class LoginController
         header('location:/login');
     }
 
-    public function logout(){
+    public function logout()
+    {
         session_destroy();
         header('location:/login');
     }

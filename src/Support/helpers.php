@@ -1,6 +1,5 @@
 <?php
 
-use JetBrains\PhpStorm\Pure;
 use PhpMvc\Application;
 use PhpMvc\Http\Request;
 use PhpMvc\Http\Response;
@@ -12,7 +11,7 @@ define("BASE_PATH", dirname(__DIR__) . DS . '..' . DS);
 const VIEWS_PATH = BASE_PATH . 'views' . DS;
 const CONFIG_PATH = BASE_PATH . 'config' . DS;
 const LAYOUTS_PATH = BASE_PATH . 'views' . DS . 'layouts' . DS;
-const UPLOAD_PATH = BASE_PATH.'Public'.DS. 'uploads' . DS;
+const UPLOAD_PATH = BASE_PATH . 'Public' . DS . 'uploads' . DS;
 const PRODUCT_PATH = BASE_PATH . 'assets' . DS . 'product' . DS;
 
 if (!function_exists('config')) {
@@ -106,25 +105,27 @@ if (!function_exists('request')) {
     }
 }
 
-if (!function_exists('userType')) {
-    function userType()
+if (!function_exists('isLogged')) {
+    function isLogged(): bool
     {
         if (empty($_SESSION) || !$_SESSION['type']) {
-            return null;
+            return false;
         }
-        return $_SESSION['type'];
+        return true;
     }
 }
 
-if (!function_exists('isUser')){
-    #[Pure] function isUser():bool{
-        return userType() === 'user';
+if (!function_exists('isUser')) {
+    function isUser(): bool
+    {
+        return $_SESSION['type'] === 'user';
     }
 }
+
 if (!function_exists('isAdmin')) {
-    #[Pure] function isAdmin(): bool
+    function isAdmin(): bool
     {
-        return userType() === 'admin';
+        return $_SESSION['type'] === 'admin';
     }
 }
 
@@ -151,5 +152,15 @@ if (!function_exists('back')) {
     function back()
     {
         return (new Response())->back();
+    }
+}
+
+if (!function_exists('pageNumber')) {
+
+    function pageNumber()
+    {
+        $page = (int)request()->get('page');
+        if (!$page) {$page = 1;}
+        return $page;
     }
 }

@@ -1,6 +1,6 @@
 {
     "name": "gimmey/php-mvc",
-    "description": "Micro MVC PHP based framework",
+    "description": "Online CoffeeShop MVC PHP based",
 
     "authors": [
         {
@@ -17,8 +17,7 @@
     "require": {
         "vlucas/phpdotenv": "^5.4",
 
-      "ext-pdo": "*",
-      "ext-http": "*"
+      "ext-pdo": "*"
     }
     ,
     "require-dev": {

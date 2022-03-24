@@ -37,11 +37,11 @@
                                     <td><?= $order['name'] ?></td>
                                     <td><?= $order['total_amount'] ?></td>
                                     <td><?= $order['order_date'] ?></td>
-                                    <td><a class='btn btn-primary' href='/admin/orders/done?id=<?=$order['id']?>'>Set done</a></td>
+                                    <td><a class='btn btn-primary' href='/orders/done?id=<?=$order['id']?>'>Set done</a></td>
                                     <td><?= $order['room'] ?></td>
                                     <td><?= $order['ext'] ?></td>
-                                    <td><a href='/admin/orders/details?id=<?= $order['id'] ?>' class='btn btn-info'>Details</a></td>
-                                    <td><a href='/admin/orders/delete?id=<?= $order['id'] ?>' class='btn btn-danger'>Delete</a></td>
+                                    <td><a href='/orders/details?id=<?= $order['id'] ?>' class='btn btn-info'>Details</a></td>
+                                    <td><a href='/orders/delete?id=<?= $order['id'] ?>' class='btn btn-danger'>Delete</a></td>
                                 </tr>
                             <?php } ?>
                             </tbody>

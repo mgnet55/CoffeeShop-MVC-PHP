@@ -31,7 +31,7 @@
                             </thead>
                             <tbody>
                             <?php foreach ($orders as $order) { $processing=$order['order_status'];
-                                if ($processing !== "done") {$processing="<a class='badge bg-primary' href='/admin/orders/done?id=".$order['id']."'>Set done</a>";}
+                                if ($processing !== "done") {$processing="<a class='badge bg-primary' href='/orders/done?id=".$order['id']."'>Set done</a>";}
                                 else{$processing='<span class="badge bg-success">Delivered</span>';}
                                 ?>
                                 <tr>
@@ -40,8 +40,8 @@
                                     <td><?= $order['total_amount'] ?></td>
                                     <td><?= $order['order_date'] ?></td>
                                     <td><?=$processing?></td>
-                                    <td><a href='/admin/orders/details?id=<?= $order['id'] ?>' class='btn btn-info'>Details</a></td>
-                                    <td><a href='/admin/orders/delete?id=<?= $order['id'] ?>' class='btn btn-danger'>Delete</a></td>
+                                    <td><a href='/orders/details?id=<?= $order['id'] ?>' class='btn btn-info'>Details</a></td>
+                                    <td><a href='/orders/delete?id=<?= $order['id'] ?>' class='btn btn-danger'>Delete</a></td>
                                 </tr>
                             <?php } ?>
                             </tbody>

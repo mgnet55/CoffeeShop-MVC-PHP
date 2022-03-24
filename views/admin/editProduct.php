@@ -45,7 +45,7 @@
                                 <div class="form-group">
                                     <label for="inputFile">Product Image</label>
                                     <input type="file" accept="image/png, image/gif, image/jpeg" id="avatar"
-                                           name="image" required>
+                                           name="image">
                                 </div>
                             </div>
                             <!-- /.card-body -->

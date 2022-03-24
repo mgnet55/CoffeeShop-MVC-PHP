@@ -27,11 +27,11 @@
                 <a class="nav-link" data-widget="pushmenu" href="#" role="button"><i class="fas fa-bars"></i></a>
             </li>
             <li class="nav-item d-none d-sm-inline-block">
-                <a href="/admin" class="nav-link">Home</a>
+                <a href="/" class="nav-link">Home</a>
             </li>
         </ul>
         <ul class="navbar-nav ml-auto"><li class="nav-item">
-                <a class="nav-link" href="/admin/logout" role="button">Logout <i class="fa fa-sign-out""></i>
+                <a class="nav-link" href="/logout" role="button">Logout <i class="fa fa-sign-out""></i>
                 </a></li>
         </ul>
     </nav>
@@ -40,7 +40,7 @@
     <!-- Main Sidebar Container -->
     <aside class="main-sidebar sidebar-dark-primary elevation-4">
         <!-- Brand Logo -->
-        <a href="/index3.html" class="brand-link">
+        <a href="/" class="brand-link">
             <img src="/logo.png"  class="brand-image img-circle elevation-3 bg-white" style="opacity: .8">
             <span class="brand-text font-weight-light"><?= env('APP_NAME') ?></span>
         </a>
@@ -63,7 +63,7 @@
                     data-accordion="false">
                     <!-- Add icons to the links using the .nav-icon class
                          with font-awesome or any other icon font library -->
-                    <li class="nav-item"><a href="/admin" class="nav-link"><i class="nav-icon fa fa-home"></i><p>Home</p></a></li>
+                    <li class="nav-item"><a href="/" class="nav-link"><i class="nav-icon fa fa-home"></i><p>Home</p></a></li>
 
                     <li class="nav-item">
                         <a href="#" class="nav-link"><i class="nav-icon fa fa-user"></i><p>Users<i class="fas fa-angle-left right"></i></p></a>
@@ -85,18 +85,16 @@
                         <a href="#" class="nav-link"><i class="nav-icon fa fa-shopping-cart"></i><p>Orders<i class="fas fa-angle-left right"></i></p></a>
                         <ul class="nav nav-treeview">
                             <li class="nav-item"><a href="/admin/orders" class="nav-link"><i class="nav-icon fa fa-asterisk"></i><p>All</p></a></li>
-                            <li class="nav-item"><a href="/admin/orders/processing" class="nav-link"><i class="nav-icon fa fa-clock-o"></i><p>Processing</p></a></li>
+                            <li class="nav-item"><a href="/orders/processing" class="nav-link"><i class="nav-icon fa fa-spinner"></i><p>Processing</p></a></li>
                             <li class="nav-item"><a href="/admin/orders/add" class="nav-link"><i class="nav-icon fa fa-plus"></i><p>Add Order</p></a></li>
                         </ul>
                     </li>
 
-<!--                    <li class="nav-item"><a href="/admin/orders" class="nav-link"><i class="nav-icon fa fa-list-alt "></i><p>Checks</p></a></li>-->
-
                     <li class="nav-item">
                         <a href="#" class="nav-link"><i class="nav-icon fa fa-th-list"></i><p>Categories<i class="fas fa-angle-left right"></i></p></a>
                         <ul class="nav nav-treeview">
-                            <li class="nav-item"><a href="/admin/categories" class="nav-link"><i class="nav-icon fa fa-asterisk"></i><p>All</p></a></li>
-                            <li class="nav-item"><a href="/admin/categories/add" class="nav-link"><i class="nav-icon fa fa-plus"></i><p>Add Category</p></a></>
+                            <li class="nav-item"><a href="/admin/categories" class="nav-link disabled"><i class="nav-icon fa fa-asterisk"></i><p>All</p></a></li>
+                            <li class="nav-item"><a href="/admin/categories/add" class="nav-link disabled"><i class="nav-icon fa fa-plus"></i><p>Add Category</p></a></>
                         </ul>
                     </li>
 

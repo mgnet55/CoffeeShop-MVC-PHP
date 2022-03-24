@@ -6,11 +6,10 @@ function readSessionStorage() {
 }
 
 function addToCart(id, name, unitPrice, image) {
-    console.log('invoked')
     let items = readSessionStorage();
     if (items[id]) {
         items[id].quantity += 1;
-        items[id]['total'] =  Math.round(items[id]['total']+ unitPrice)
+        items[id]['total'] = Math.round(items[id]['total'] + unitPrice)
     } else {
         items[id] = {name, unitPrice, quantity: 1, image, total: unitPrice};
     }
@@ -37,8 +36,8 @@ function updateCart() {
         <tr>
             <td><img src="/uploads/${items[index].image}" class="product-thumb" width="50px" alt="Product"></td>
             <td>
-                <div class="product-item">
-                    <div class="product-info"><h4 class="product-title">${items[index].name}</h4></div>
+                <div class="product-info">
+                    <p class="product-title">${items[index].name}</p>
                 </div>
             </td>
             <td class="text-center">${items[index].quantity}</td>
@@ -47,15 +46,17 @@ function updateCart() {
         </tr>`;
     }
     container.innerHTML = html;
-    document.getElementById('totalcart').innerHTML = Math.round(cartTotalPrice)+" EGP";
+    document.getElementById('totalcart').innerHTML = Math.round(cartTotalPrice) + " EGP";
 }
 
 function clearCart() {
     sessionStorage.removeItem('cartItems');
     updateCart();
 }
-
-function sendOrder() {
+function getUserId(){
+    return +document.getElementById('userId').value;
+}
+function sendOrder(userId=0) {
     let order = {};
     const items = readSessionStorage();
     for (const id in items) {
@@ -63,7 +64,7 @@ function sendOrder() {
     }
     order = JSON.stringify(order);
 
-    fetch('/neworder', {
+    fetch('/neworder?uid='+userId, {
         method: 'POST',
         headers: {
             'Accept': 'application/json',
