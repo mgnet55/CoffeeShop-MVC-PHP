@@ -10,6 +10,6 @@ require_once BASE_PATH . 'vendor'.DS.'autoload.php';
 require_once BASE_PATH . 'routes'.DS.'web.php';
 
 $env = Dotenv::createImmutable(BASE_PATH);
-
 $env->load();
+
 app()->run();

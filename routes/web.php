@@ -1,5 +1,6 @@
 <?php
 
+use App\Controllers\ForgetPassword;
 use App\Controllers\HomeController;
 use App\Controllers\OrderController;
 use App\Controllers\ProductController;
@@ -42,3 +43,7 @@ Route::GET('orders/processing',[OrderController::class,'processing']);
 Route::GET('orders/details',[OrderController::class,'show']);
 Route::GET('orders/delete',[OrderController::class,'destroy']);
 Route::GET('orders/done',[OrderController::class,'setDone']);
+
+//Password Reset
+Route::GET('forget',[ForgetPassword::class,'index']);
+Route::POST('forget',[ForgetPassword::class,'generate_token']);

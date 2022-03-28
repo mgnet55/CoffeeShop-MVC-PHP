@@ -3,6 +3,7 @@
 namespace PhpMvc;
 
 use PhpMvc\Database\DB;
+use PhpMvc\Database\Managers\Contracts\DatabaseManager;
 use PhpMvc\Database\Managers\MysqlManager;
 use PhpMvc\Http\Request;
 use PhpMvc\Http\Response;
@@ -29,16 +30,13 @@ class Application
         $this->config = new Config($this->loadConfiguration());
     }
 
-    protected function getDatabaseDriver(): MysqlManager
+    protected function getDatabaseDriver(): DatabaseManager
     {
         return match(env('DB_DRIVER','mysql')) {
             'mysql' => new MysqlManager,
         };
     }
 
-    /**
-     * @return void
-     */
     public function run()
     {
         $this->db->init();

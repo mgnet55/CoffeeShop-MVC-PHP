@@ -29,9 +29,11 @@ class HomeController
 
     }
 
-    public function login(){
+    public function login()
+    {
         return view('auth.login');
     }
+
     public function auth()
     {
         $v = new Validator;
@@ -80,6 +82,7 @@ class HomeController
         session_destroy();
         header('location:/login');
     }
+
 
 
 }

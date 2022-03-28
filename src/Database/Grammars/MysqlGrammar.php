@@ -27,9 +27,9 @@ class MysqlGrammar
 
     public static function buildSelectQuery(int $page ,$filter,$columns): string
     {
-        if (is_array($columns)) {$columns = ' (`'.implode('`, `', $columns).'`) ';}
+        if (is_array($columns)) {$columns = '`'.implode('`,`',$columns).'`';}
         $query = "SELECT {$columns} FROM " . BaseModel::getTableName() ;
-        if ($filter) {$query .= " WHERE {$filter[0]} ?";}
+        if ($filter) {$query .= " WHERE {$filter[0]}?";}
         $query.=" LIMIT ".env('DB_PER_PAGE'). " OFFSET ".env('DB_PER_PAGE')*($page-1);
         return $query;
     }
