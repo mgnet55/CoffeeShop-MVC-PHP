@@ -12,7 +12,7 @@ Bootstrap4 - FontAwesome4.7 - AdminLTE
 ## Team  
 1- Mina Gamal <br> 
 2- Rana Wakad <br>
-3- Ebtisam Mamdouh
+3- Ebtesam Mamdouh
   
   
 *Thanks to **ITI** for their efforts*
