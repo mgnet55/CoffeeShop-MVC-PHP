@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:33060
--- Generation Time: Mar 24, 2022 at 08:37 AM
+-- Generation Time: Mar 28, 2022 at 07:08 PM
 -- Server version: 10.7.3-MariaDB-log
 -- PHP Version: 8.0.16
 
@@ -87,7 +87,7 @@ CREATE TABLE `orders` (
 
 INSERT INTO `orders` (`id`, `order_date`, `order_status`, `total_amount`, `user_id`) VALUES
 (35, '2022-03-19 23:20:57', 'done', 90.23, 1),
-(38, '2022-03-21 01:06:00', 'processing', 457.47, 1),
+(38, '2022-03-21 01:06:00', 'done', 457.47, 1),
 (41, '2022-03-23 20:25:00', 'processing', 98.21, 1),
 (44, '2022-03-24 03:19:08', 'processing', 25.26, 1),
 (45, '2022-03-24 03:25:47', 'done', 27.44, 1),
@@ -95,7 +95,11 @@ INSERT INTO `orders` (`id`, `order_date`, `order_status`, `total_amount`, `user_
 (53, '2022-03-24 04:10:48', 'processing', 22.5, 1),
 (54, '2022-03-24 04:43:38', 'processing', 273.69, 5),
 (55, '2022-03-24 04:47:33', 'processing', 69.79, 3),
-(56, '2022-03-24 04:52:11', 'done', 69.79, 1);
+(56, '2022-03-24 04:52:11', 'done', 69.79, 1),
+(57, '2022-03-24 22:00:04', 'processing', 166.07, 4),
+(58, '2022-03-26 23:32:25', 'processing', 37.98, 1),
+(59, '2022-03-26 23:42:05', 'processing', 69.79, 3),
+(60, '2022-03-28 18:43:41', 'processing', 98.21, 1);
 
 -- --------------------------------------------------------
 
@@ -145,20 +149,39 @@ INSERT INTO `order_products` (`quantity`, `product_id`, `order_id`) VALUES
 (1, 6, 55),
 (1, 7, 55),
 (1, 6, 56),
-(1, 7, 56);
+(1, 7, 56),
+(1, 4, 57),
+(1, 5, 57),
+(1, 6, 57),
+(1, 7, 57),
+(1, 7, 58),
+(1, 11, 58),
+(1, 6, 59),
+(1, 7, 59),
+(1, 6, 60),
+(1, 7, 60),
+(1, 11, 60);
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `password_rest`
+-- Table structure for table `password_resets`
 --
 
-CREATE TABLE `password_rest` (
+CREATE TABLE `password_resets` (
   `id` int(11) NOT NULL,
   `reset_token` varchar(60) NOT NULL,
   `created` timestamp NOT NULL DEFAULT current_timestamp(),
   `email` varchar(50) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `password_resets`
+--
+
+INSERT INTO `password_resets` (`id`, `reset_token`, `created`, `email`) VALUES
+(7, '6bd2b9745feba055b7d1a63c41f85a65', '2022-03-28 18:35:22', 'agerhts1@fc2.com'),
+(8, '9a422e20fd7c7ccd617cf21f1c4e4ac8', '2022-03-28 18:38:33', 'user@user.com');
 
 -- --------------------------------------------------------
 
@@ -255,10 +278,11 @@ ALTER TABLE `order_products`
   ADD KEY `order_products_ibfk_1` (`product_id`);
 
 --
--- Indexes for table `password_rest`
+-- Indexes for table `password_resets`
 --
-ALTER TABLE `password_rest`
-  ADD PRIMARY KEY (`id`);
+ALTER TABLE `password_resets`
+  ADD PRIMARY KEY (`id`),
+  ADD UNIQUE KEY `token_email` (`email`);
 
 --
 -- Indexes for table `products`
@@ -293,13 +317,13 @@ ALTER TABLE `categories`
 -- AUTO_INCREMENT for table `orders`
 --
 ALTER TABLE `orders`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=57;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=61;
 
 --
--- AUTO_INCREMENT for table `password_rest`
+-- AUTO_INCREMENT for table `password_resets`
 --
-ALTER TABLE `password_rest`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+ALTER TABLE `password_resets`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- AUTO_INCREMENT for table `products`
