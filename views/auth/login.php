@@ -43,7 +43,7 @@
                 <div class="forget">
                     <a href="/forget">Forget Password!</a>
                 </div>
-                <button type="submit" class="submit" name="login">Send Reset</button>
+                <button type="submit" class="submit" name="login">Login</button>
             </div>
         </form>
     </div>
