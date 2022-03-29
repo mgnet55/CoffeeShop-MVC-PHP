@@ -22,6 +22,7 @@ class MysqlManager implements DatabaseManager
 
     public function query(string $query, $values = [])
     {
+        //dd($query);
         $stmt = self::$instance->prepare($query);
 
         for ($i = 1, $iMax = count($values); $i <= $iMax; $i++) {

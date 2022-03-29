@@ -14,7 +14,7 @@ class StrongRule implements Rule
         $number    = preg_match('@[0-9]@', $value);
         $specialChars = preg_match('@[^\w]@', $value);
 
-        return !(!$uppercase || !$lowercase || !$number || !$specialChars || strlen($password) < 8);
+        return $uppercase && $lowercase && $number && $specialChars && strlen($value) >= 8;
     }
 
     public function __toString(): string

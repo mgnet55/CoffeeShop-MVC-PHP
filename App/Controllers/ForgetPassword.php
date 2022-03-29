@@ -4,62 +4,84 @@ namespace App\Controllers;
 
 use App\Models\PasswordReset;
 use App\Models\User;
-use PHPMailer\PHPMailer\PHPMailer;
-use PhpMvc\Support\Hash;
+use PhpMvc\Support\MailBuilder;
 use PhpMvc\Validation\Validator;
 
 class ForgetPassword
 {
-    public function index()
+    public function forget()
     {
-        return view('user.reset_password');
+        return view('auth.forget_form');
     }
 
-
-    public function generate_token(){
+    public function generate_token()
+    {
         $v = new Validator;
         $v->setRules([
                 'email' => 'required|email'
             ]
         );
-        $v->validate(['email'=> request('email')]);
+        $v->validate(['email' => request('email')]);
         if (!$v->isValid()) {
             app()->session->setflash('errors', $v->getErrors());
             app()->session->setflash('old', request()->all());
             return back();
         }
 
-        $user = User::where(1,['email=',request('email')],['email','name'])[0];
-        if($user){
-            $token = md5($user->email.$user->name.strtotime('now'));
-            PasswordReset::create(['reset_token'=>$token,'email'=>$user->email]);
-            $this->sendMail($user->email,$user->name,$token,);
+        $user = User::where(1, ['email=', request('email')], ['email', 'name'])[0];
+        if (!$user) {
+            return back();
         }
+        $mail = new MailBuilder;
+        $reset = PasswordReset::where(1, ['email=', $user->email])[0];
+        if ($reset) {
+            $mail->sendTo($reset->email, $user->name)->passwordResetMail($reset->reset_token)->send();
+            return view('auth.email_sent');
+        }
+        $token = md5($user->email . $user->name . strtotime('now'));
+        PasswordReset::create(['reset_token' => $token, 'email' => $user->email]);
+        $mail->sendTo($user->email, $user->name)->passwordResetMail($token)->send();
+        return view('auth.email_sent');
+
     }
 
-    public function sendMail($email,$name,$token)
+    public function reset()
     {
-
-        $mail = new PHPMailer();
-        $mail->isSMTP();
-        $mail->Host = env('MAIL_HOST');
-        $mail->SMTPAuth = env('MAIL_SMTP_AUTH');
-        $mail->Port = env('MAIL_PORT');
-        $mail->Username = env('MAIL_USERNAME');
-        $mail->Password = env('MAIL_PASSWORD');
-        $mail->From = "admin@sweetcoffe.com";
-        $mail->FromName = "Sweet Coffee";
-        $mail->addAddress($email, $name);
-        $mail->isHTML(true);
-        $mail->Subject = "Reset Password";
-        $mail->Body = "<h2>Hi $name</h2><br><p>you've requseted a reset password here you are</p><br><a href='{$_SERVER["SERVER_NAME"]}/reset?token={$token}'></a>";
-        dd($mail);
-        try {
-            $mail->send();
-            echo "Message has been sent successfully";
-        } catch (Exception $e) {
-            echo "Mailer Error: " . $mail->ErrorInfo;
+        $token = request('token');
+        if (!$token) {
+            return view('errors.404');
         }
+        $resetInfo = PasswordReset::where(1, ['reset_token=', $token]);
+        if (!$resetInfo) {
+            return view('errors.404');
+        }
+        return view('auth.reset_form', params: ['resetInfo' => $resetInfo[0]]);
+
     }
+
+    public function updatePassword()
+    {
+        $v = new Validator;
+        $v->setRules([
+                'reset_token' => 'required|minlength:32|maxlength:32',
+                'password' => 'password|password|confirmed'
+            ]
+        );
+        $v->validate(request()->all());
+        if (!$v->isValid()) {
+            app()->session->setflash('errors', $v->getErrors());
+            app()->session->setflash('old', request()->all());
+            return back();
+        }
+        $resetInfo = PasswordReset::where(1, ['reset_token=', request('reset_token')]);
+        if (!$resetInfo) {
+            return view('errors.404');
+        }
+        $password = bcrypt(request('password'));
+        app()->db->raw('UPDATE users SET `password`=? WHERE `email`=?', [$password, $resetInfo[0]->email]);
+        PasswordReset::delete($resetInfo[0]->id);
+        return header('Location:/login');
+    }
+
 
 }

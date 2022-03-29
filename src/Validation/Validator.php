@@ -64,7 +64,6 @@ class Validator
 
     public function getErrors($key = null)
     {
-        var_dump($key);
         return $key ? $this->errorBag->errors[$key] : $this->errorBag->errors;
     }
 

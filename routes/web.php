@@ -45,5 +45,7 @@ Route::GET('orders/delete',[OrderController::class,'destroy']);
 Route::GET('orders/done',[OrderController::class,'setDone']);
 
 //Password Reset
-Route::GET('forget',[ForgetPassword::class,'index']);
+Route::GET('forget',[ForgetPassword::class,'forget']);
 Route::POST('forget',[ForgetPassword::class,'generate_token']);
+Route::GET('reset',[ForgetPassword::class,'reset']);
+Route::POST('reset',[ForgetPassword::class,'updatePassword']);
